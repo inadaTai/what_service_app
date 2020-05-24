@@ -1,3 +1,16 @@
 <% provide(:page_title, "HOME") %>
-<h1>what_service_app</h1>
-<p>Find me in app/views/home_pages/home.html.erb</p>
+<div class="center jumbotron">
+  <h1>What Service ？</h1>
+  <p>あなたの受けたことがあるサービスに関して感想や情報を共有するサイトです！</p>
+  <%= link_to "新規登録はこちら！", '#', class: "btn btn-lg btn-success" %><br>
+  <div class="row">
+    <div class="col-md-6">
+      <p>フェイスブックアカウトをお持ちの方は</p>
+      <%= link_to "Facebookアカウントでログイン！",'#',class: "btn btn-lg btn-primary" %>
+    </div>
+    <div class="col-md-6">
+      <p>ツイッターアカウトをお持ちの方は</p>
+      <%= link_to "Twitterアカウントでログイン！",'#',class: "btn btn-lg btn-info" %>
+    </div>
+  </div>
+</div>
