@@ -95,4 +95,10 @@ RSpec.describe User, type: :model do
       expect(user).to be_valid
     end
   end
+
+  describe "authenticated?" do
+    it "authenticated?メソッドへnilを代入した場合falseが返る" do
+      expect(user.authenticated?('')).to be_falsey
+    end
+  end
 end

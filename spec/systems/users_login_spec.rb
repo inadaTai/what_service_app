@@ -10,14 +10,14 @@ RSpec.describe "ログインに関するテスト", type: :system do
   end
 
   context "ログイン失敗時のメッセージに関するテスト" do
-    it "無効なログイン情報を渡した場合エラー表記が出ているか" do
+    it "無効なログイン情報を渡した場合エラー表記が出ている" do
       visit login_path
       submit_invalid
       expect(current_path).to eq login_path
       expect(page).to have_selector '.alert-danger'
     end
 
-    it "無効なログイン情報を渡しエラー表記がログインページのみ出ているかテスト" do
+    it "無効なログイン情報を渡しエラー表記がログインページのみ出ている" do
       visit login_path
       submit_invalid
       expect(current_path).to eq login_path
@@ -28,13 +28,13 @@ RSpec.describe "ログインに関するテスト", type: :system do
   end
 
   context "有効なログイン時のメッセージに関するテスト" do
-    it "有効なログイン情報を渡した場合成功の表記が出ているか" do
+    it "有効なログイン情報を渡した場合成功の表記が出ている" do
       login_system(user)
       expect(current_path).to eq user_path(1)
       expect(page).to have_selector '.alert-success'
     end
 
-    it "有効なログイン後にログアウトできるかテスト" do
+    it "有効なログイン後にログアウトできる" do
       login_system(user)
       expect(current_path).to eq user_path(1)
       expect(page).to have_selector '.alert-success'

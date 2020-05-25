@@ -25,17 +25,17 @@ RSpec.describe "Users", type: :request do
   end
 
   describe "GET /signup" do
-    it "新規登録画面へアクセスできるかテスト" do
+    it "新規登録画面へアクセス可能" do
       get signup_path
       expect(response).to have_http_status(:success)
     end
 
-    it "無効な新規登録情報テスト" do
+    it "無効な新規登録情報を送信しユーザーを作成できない" do
       get signup_path
       expect { post_signup_invalid }.not_to change(User, :count)
     end
 
-    it "有効な新規登録情報テスト" do
+    it "有効な新規登録情報を送信しユーザーを作成する" do
       get signup_path
       expect { post_signup_valid }.to change(User, :count).by(1)
       follow_redirect!

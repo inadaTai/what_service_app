@@ -2,7 +2,10 @@
 <h1>新規登録</h1>
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+<div class="col-md-4">
+  <img src="/signup.png" width="450px" height="450px">
+</div>
+  <div class="col-md-6 col-md-offset-1">
     <%= form_with(model: @user, url: signup_path, local: true) do |f| %>
     <%= render 'share/error_messages', object: f.object %>
 
@@ -22,6 +25,9 @@
 
     <% end %>
 
-    <br><%= link_to "利用規約" , policy_path %><br>
+    <br><div class="policy">
+    <p>サービスのご利用前に利用規約のご確認をお願い致します</p>
+      <br><p><%= link_to "利用規約" , policy_path %></p><br>
+    </div>
   </div>
 </div>

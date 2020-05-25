@@ -80,3 +80,23 @@ div.about-design{
   text-align: left;
   padding: 110px 5px;
 }
+
+/* 新規登録フォーム */
+div.policy{
+  padding-top: 10px 0;
+  font-weight: bold;
+  text-align: center;
+}
+/* ログインフォーム */
+.checkbox {
+  margin-top: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
+}
