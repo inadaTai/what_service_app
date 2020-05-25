@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       flash[:success] = 'ログインしました！'
       redirect_to user
     else
-      flash[:danger] = 'メールアドレスまたはパスワードが違います。'
+      flash.now[:danger] = 'メールアドレスまたはパスワードが違います。'
       render 'new'
     end
   end

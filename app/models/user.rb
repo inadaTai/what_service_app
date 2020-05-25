@@ -8,8 +8,11 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
 
   def User.digest(string)
-    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-                                                BCrypt::Engine.cost
-    BCrypt::Password.create(string, cost: cost)
+    cost = ActiveModel::SecurePassword.min_cost
+    if BCrypt::Engine::MIN_COST
+      BCrypt::Engine.cost
+    else
+      BCrypt::Password.create(string, cost: cost)
+    end
   end
 end

@@ -62,6 +62,7 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  config.include ApplicationHelpers
   config.include FactoryBot::Syntax::Methods
   config.before(:each) do |example|
     if example.metadata[:type] == :system
