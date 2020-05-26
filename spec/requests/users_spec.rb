@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :request do
+  let!(:user) { create(:user) }
+  let!(:other_user) { create(:other_user) }
+
   def post_signup_invalid
     post signup_path, params: {
       user: {
@@ -16,12 +19,26 @@ RSpec.describe "Users", type: :request do
     post signup_path, params: {
       user: {
         name: "test",
-        email: "test@gmail.com",
+        email: "test23@gmail.com",
         password: "foobar",
         password_confirmation: "foobar",
-        id: "1",
       },
     }
+  end
+
+  describe "GET /users" do
+    it "未ログイン時ユーザー一覧ページへアクセスできない" do
+      get users_path
+      follow_redirect!
+      expect(flash[:danger]).to be_truthy
+      expect(request.fullpath).to eq '/login'
+    end
+
+    it "ログイン時ユーザー一覧ページへアクセス可能" do
+      log_in_as(user)
+      get users_path
+      expect(response).to have_http_status(:success)
+    end
   end
 
   describe "GET /signup" do
@@ -39,7 +56,7 @@ RSpec.describe "Users", type: :request do
       get signup_path
       expect { post_signup_valid }.to change(User, :count).by(1)
       follow_redirect!
-      expect(request.fullpath).to eq '/users/1'
+      expect(request.fullpath).to eq "/users/3"
     end
   end
 end

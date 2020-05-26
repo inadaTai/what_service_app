@@ -24,6 +24,13 @@
     <div class="gravatar_edit">
       <%= gravatar_for @user %>
       <a href="http://gravatar.com/emails" target="_blank">change</a>
-    </div>
+    </div><br>
+    <% if current_user?(@user) %>
+      <!-- 退会時の最終確認の文書でインデントを揃えると見栄えが悪くなるので、わざと崩しています -->
+      <br><button type="button" class="btn btn-warning btn-delete">
+      <%= link_to "What Service Appを退会", @user, method: :delete,
+      data:{ confirm: "退会の手続きをされますと全てのサービスが利用不可となります、再度ご利用いただくには会員登録が必要となります。
+本当に退会してよろしいですか?"} %></button>
+    <% end %>
   </div>
 </div>
