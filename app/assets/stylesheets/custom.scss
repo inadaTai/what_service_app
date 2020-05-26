@@ -87,6 +87,7 @@ div.policy{
   font-weight: bold;
   text-align: center;
 }
+
 /* ログインフォーム */
 .checkbox {
   margin-top: 10px;
@@ -99,4 +100,14 @@ div.policy{
 #session_remember_me {
   width: auto;
   margin-left: 0;
+}
+/* ユーザー 一覧ページ */
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
 }

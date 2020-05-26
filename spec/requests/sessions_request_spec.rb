@@ -55,7 +55,7 @@ RSpec.describe "Sessions", type: :request do
       follow_redirect!
       expect(request.fullpath).to eq '/'
     end
-    
+
     it "記憶トークンを利用してログインが出来ているか確認" do
       get login_path
       post_valid_information(1)
