@@ -1,0 +1,15 @@
+<% provide(:page_title, "#{@micropost.name}" ) %>
+<div id="micropost-<%= "#{@micropost.id}" %>">
+  <%= link_to gravatar_for(@micropost.user, size: 70), @micropost.user ,:class=>"user-name" %>
+  <span class="user">投稿主：<%= link_to "#{@micropost.user.name}", @micropost.user  %></span><br>
+  <span class="micropost_content">
+    <%= "サービスの名前：#{@micropost.name}" %><br>
+    <%= "サービスの金額：#{@micropost.price}" %><br>
+    <%= "サービスの内容：#{@micropost.content}" %><br>
+    <% if current_user?(@micropost.user) %>
+    <%= link_to "削除する", @micropost, method: :delete,
+                                     data: { confirm: "投稿した記事を削除しますか？" } %>
+    <%= link_to "記事の修正を行う", edit_micropost_path(current_user) %>
+    <% end %>
+  </span>
+</div>

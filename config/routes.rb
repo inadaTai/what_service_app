@@ -5,10 +5,12 @@ Rails.application.routes.draw do
   get '/help',     to:'home_pages#help'
   get '/contact',  to:'home_pages#contact'
   get '/policy',   to:'home_pages#policy'
+  get '/post_pages', to:'home_pages#post_pages'
   get '/signup',   to:'users#new'
   post '/signup',  to:'users#create'
   get '/login',    to:'sessions#new'
   post '/login',   to:'sessions#create'
   delete '/logout', to:'sessions#destroy'
   resources :users
+  resources :microposts,          only: [:create, :destroy, :show, :update, :edit]
 end

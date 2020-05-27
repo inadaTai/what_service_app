@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
 
   def new
@@ -47,21 +48,5 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
-  end
-
-  def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = "ログインが必要なページとなります。"
-      redirect_to login_url
-    end
-  end
-
-  def correct_user
-    @user = User.find(params[:id])
-    if @user == current_user || current_user.admin?
-    else
-      redirect_to(root_url)
-    end
   end
 end

@@ -1,0 +1,18 @@
+<% provide(:page_title, '投稿記事編集') %>
+<h1>投稿記事編集フォーム</h1>
+<%= form_with(model: @micropost, local: true) do |f| %>
+  <%= render 'share/error_messages', object: f.object %>
+    <div class="field">
+    <%= f.label :name %>
+      <%= f.text_area :name, class: 'form-control', placeholder: "記事の題名" %>
+    </div>
+    <div class="field">
+    <%= f.label :price %>
+      <%= f.text_area :price, class: 'form-control', placeholder: "受けたサービスの値段" %>
+    </div>
+    <div class="field">
+    <%= f.label :content %>
+      <%= f.text_area :content, size: "20x30", class: 'form-control', placeholder: "記事の内容" %>
+    </div>
+    <%= f.submit "編集を反映する", class: "btn btn-primary" %>
+  <% end %>
