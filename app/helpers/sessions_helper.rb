@@ -8,7 +8,7 @@ module SessionsHelper
     cookies.permanent.signed[:user_id] = user.id
     cookies.permanent[:remember_token] = user.remember_token
   end
-# rubocop:disable all
+  # rubocop:disable all
   def current_user
     if user_id = session[:user_id]
       @current_user ||= User.find_by(id: user_id)
@@ -21,7 +21,7 @@ module SessionsHelper
     end
   end
 
-   # rubocop:enable all
+  # rubocop:enable all
   def log_out
     forget(current_user)
     session.delete(:user_id)
