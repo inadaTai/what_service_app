@@ -1,24 +1,30 @@
 <% provide(:page_title, "#{@micropost.name}" ) %>
-<div id="micropost-<%= "#{@micropost.id}" %>">
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+  <div id="micropost-<%= "#{@micropost.id}" %>">
   <% if @micropost.user.picture.present? %>
     <%= image_tag @micropost.user.resize_home_icon %>
   <% else %>
     <img src="/default2.jpg" width="65px" height="65px">
   <% end %>
   <span class="user">投稿主：<%= link_to "#{@micropost.user.name}", @micropost.user  %></span><br>
-  <span class="micropost_content">
-    <%= "サービスの名前：#{@micropost.name}" %><br>
-    <%= "サービスの金額：#{@micropost.price}" %><br>
+  <span class="micropost_content" style="white-space: pre-line">
+  ①サービスの名前<br><%= "#{@micropost.name}" %><br>
+  ②サービスの金額<br><%= "#{@micropost.price}" %><br>
     <% if @micropost.picture.attached? %>
-    <div class="log-picture">
-      <%= image_tag @micropost.resize_picture %>
-    </div>
+      <div class="log-picture">
+        ③画像<br><%= image_tag @micropost.resize_picture %>
+      </div>
+    <% else %>
+      ③画像<br>画像が選択されていません。
     <% end %>
-    <%= "サービスの内容：#{@micropost.content}" %><br>
+    サービスの内容：<br><%= "#{@micropost.content}" %><br>
     <% if current_user?(@micropost.user) %>
-    <%= link_to "削除する", @micropost, method: :delete,
-                                     data: { confirm: "投稿した記事を削除しますか？" } %>
-    <%= link_to "記事の修正を行う", edit_micropost_path(@micropost.id) %>
+      <%= link_to "削除する", @micropost, method: :delete,
+                                       data: { confirm: "投稿した記事を削除しますか？" } %>
+      <%= link_to "記事の修正を行う", edit_micropost_path(@micropost.id) %>
     <% end %>
   </span>
+</div>
+</div>
 </div>
