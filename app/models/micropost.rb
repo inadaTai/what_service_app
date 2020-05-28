@@ -11,7 +11,7 @@ class Micropost < ApplicationRecord
   def picture_presence
     if picture.attached?
       if !picture.content_type.in?(%('image/jpeg image/png'))
-        errors.add(:image, 'にはjpegまたはpngファイルを添付してください')
+        errors.add(:picture, '添付にはjpegまたはpngファイルを添付してください')
       end
     else
       errors.add(:picture, 'を添付してください')

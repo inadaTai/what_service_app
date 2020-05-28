@@ -96,6 +96,18 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "ユーザーのプロフィールに関するテスト(introductカラム)" do
+    it "161文字以上は不可テスト" do
+      user.introduct = "a" * 161
+      expect(user).to be_invalid
+    end
+
+    it "160文字未満は可テスト" do
+      user.introduct = "a" * 160
+      expect(user).to be_valid
+    end
+  end
+
   describe "authenticated?" do
     it "authenticated?メソッドへnilを代入した場合falseが返る" do
       expect(user.authenticated?('')).to be_falsey

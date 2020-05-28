@@ -15,8 +15,8 @@ class User < ApplicationRecord
                                   foreign_key: "follower_id",
                                   dependent: :destroy
   has_many :passive_relationships, class_name: "Relationship",
-                                  foreign_key: "followed_id",
-                                  dependent: :destroy
+                                   foreign_key: "followed_id",
+                                   dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
@@ -36,13 +36,6 @@ class User < ApplicationRecord
     Micropost.all
   end
 
-  def follower_feed
-    following_ids = "SELECT followed_id FROM relationships
-    WHERE follower_id = :user_id"
-    Micropost.where("user_id IN (#{following_ids})
-    OR user_id = :user_id", user_id: id)
-  end
-
   def resize_icon
     picture.variant(resize: '50x50').processed
   end
@@ -58,7 +51,15 @@ class User < ApplicationRecord
   def resize_home_icon
     picture.variant(resize: '65x65').processed
   end
+  # rubocop:disable all
+  def follower_feed
+    following_ids = "SELECT followed_id FROM relationships
+    WHERE follower_id = :user_id"
+    Micropost.where("user_id IN (#{following_ids})
+    OR user_id = :user_id", user_id: id)
+  end
 
+  # rubocop:enable all
   def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
