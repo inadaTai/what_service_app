@@ -8,5 +8,13 @@
     <% end %>
     <%= @user.name %>
   </h1>
-  </li>
+  <section class="status">
+    <%= render 'share/follow_status' %>
+  </section>
+  <% if @user.introduct.present? %>
+    ■プロフィール■<br><%= "#{@user.introduct}" %>
+  <% else %>
+    ■プロフィール■<br>プロフィールが設定されていません
+  <% end %>
+  <br><%= render 'follow_form' if logged_in? %>
 </aside>

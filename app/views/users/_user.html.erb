@@ -1,10 +1,15 @@
 <li>
   <% if user.picture.present? %>
-    <%= image_tag user.resize_icon %>
+    <%= image_tag user.resize_home_icon %>
   <% else %>
     <img src="/default2.jpg" width="50px" height="50px">
   <% end %>
-<%= link_to user.name, user %>
+<%= link_to "ユーザー名：#{user.name}", user %><br>
+  <% if user.introduct.present? %>
+    ■プロフィール■<br><%= "#{user.introduct}" %>
+  <% else %>
+    ■プロフィール■<br>プロフィールが設定されていません
+  <% end %>
 <% if current_user.admin? && !current_user?(user) %>
 | <%= link_to "アカウント削除", user, method: :delete,
                               data: { confirm: "※メンテナンス日専用リンク！違反アカウントを削除する機能です、削除しますか？" } %>
