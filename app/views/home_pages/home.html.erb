@@ -5,7 +5,7 @@
       <section class="user_info">
         <%= render 'share/user_status' %>
       </section>
-      <%= link_to "記事を投稿する", post_pages_path %>
+      <%= link_to "記事を投稿する", post_pages_path, class: "btn btn-primary" %>
     </aside>
     <div class="col-md-8">
     <h3>投稿記事一覧</h3>
@@ -30,7 +30,7 @@
 </div>
 <h1>最新の投稿記事</h1>
 <%= render 'share/anfeed' %>
-<p>このサービスであなたも利用中のサービスの情報を共有しませんか？</p>
+<p>このサービスを通してあなたも利用中または利用していたサービスの情報を共有しませんか？</p>
 <p>これより先の全ての記事を見る場合は新規会員登録が必要となります。</p>
-<%= link_to "新規登録はこちら！", signup_path, class: "btn btn-lg btn-success" %><br>
+<%= link_to "新規登録", signup_path, class: "btn btn-lg btn-success" %><br>
 <% end %>

@@ -13,6 +13,19 @@
     <div class="field">
     <%= f.label :content %>
       <%= f.text_area :content, size: "20x30", class: 'form-control', placeholder: "記事の内容" %>
+    </div><br>
+    <p>現在掲載している画像</p>
+    <% if @micropost.picture.attached? %>
+    <div class="log-picture">
+      <%= image_tag @micropost.resize_picture %>
     </div>
+    <% else %>
+      画像が選択されておりません
+    <% end %>
+    <div class="field">
+    <%= f.label :picture, "記事の画像" %>
+      <%= f.file_field :picture %>
+    </div>
+    <br><br>
     <%= f.submit "編集を反映する", class: "btn btn-primary" %>
   <% end %>

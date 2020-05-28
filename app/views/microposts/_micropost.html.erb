@@ -1,5 +1,11 @@
 <li id="micropost-<%= micropost.id %>">
-  <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
+<div class="post-icon">
+  <% if micropost.user.picture.present? %>
+    <%= image_tag micropost.user.resize_home_icon %>
+  <% else %>
+    <img src="/default2.jpg" width="65px" height="65px">
+  <% end %>
+  </div>
   <span class="user"><%= link_to "投稿者：#{micropost.user.name}", micropost.user %></span><br>
   <div class="post-title">
     <span class="name"><%= link_to "記事名：#{micropost.name}", micropost_path(micropost.id) %></span>

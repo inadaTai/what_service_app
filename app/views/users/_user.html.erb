@@ -1,5 +1,9 @@
 <li>
-<%= gravatar_for user, size: 50 %>
+  <% if user.picture.present? %>
+    <%= image_tag user.resize_icon %>
+  <% else %>
+    <img src="/default2.jpg" width="50px" height="50px">
+  <% end %>
 <%= link_to user.name, user %>
 <% if current_user.admin? && !current_user?(user) %>
 | <%= link_to "アカウント削除", user, method: :delete,

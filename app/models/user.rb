@@ -4,14 +4,28 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }, confirmation: true,
                        allow_nil: true
   validates :name, presence: true, length: { maximum: 30 }
+  validates :introduct, length: { maximum: 300 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   has_many :microposts, dependent: :destroy
+  has_one_attached :picture, dependent: :destroy
 
   def feed
     Micropost.all
+  end
+
+  def resize_icon
+    picture.variant(resize: '50x50').processed
+  end
+
+  def resize_edit_icon
+    picture.variant(resize: '80x80').processed
+  end
+
+  def resize_home_icon
+    picture.variant(resize: '65x65').processed
   end
 
   def self.digest(string)
