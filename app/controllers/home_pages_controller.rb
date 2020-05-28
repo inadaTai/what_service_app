@@ -1,4 +1,5 @@
 class HomePagesController < ApplicationController
+  before_action :logged_in_user, only: [:post_pages]
   MAX_RELOAD_POST = 15
   MAX_POST = 5
   def home

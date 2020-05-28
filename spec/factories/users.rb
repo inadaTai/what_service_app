@@ -1,9 +1,10 @@
 FactoryBot.define do
-  factory :user do
+  factory :user, aliases: [:contributer] do
     name { "test" }
     email { "test@gmail.com" }
     password { "foobar" }
     password_confirmation { "foobar" }
+    id { "1" }
     admin { true }
   end
 

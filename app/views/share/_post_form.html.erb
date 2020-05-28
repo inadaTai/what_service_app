@@ -1,19 +1,19 @@
 <%= form_with(model: @micropost, local: true) do |f| %>
     <%= render 'share/error_messages', object: f.object %>
     <div class="field">
-    <%= f.label :name %>
-      <%= f.text_area :name, class: 'form-control', placeholder: "記事の題名" %>
+    <%= f.label :name, "記事の題名" %>
+      <%= f.text_area :name, class: 'form-control', placeholder: "(例：月額制動画ストリーミングサービス)" %>
     </div>
     <div class="field">
-    <%= f.label :price %>
-      <%= f.text_area :price, class: 'form-control', placeholder: "受けたサービスの値段" %>
+    <%= f.label :price, "サービスの金額を入力してください" %>
+      <%= f.text_area :price, class: 'form-control', placeholder: "(例：月額3000円...等)" %>
     </div>
     <div class="field">
-    <%= f.label :content %>
+    <%= f.label :content, "記事の内容" %>
       <%= f.text_area :content, size: "20x30", class: 'form-control', placeholder: "記事の内容" %>
     </div>
     <div class="field">
-    <%= f.label :picture %>
+    <%= f.label :picture, "記事の画像" %>
       <%= f.file_field :picture %>
     </div> 
     <%= f.submit "記事を投稿する", class: "btn btn-primary" %>    

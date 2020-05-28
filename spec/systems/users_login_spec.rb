@@ -54,7 +54,7 @@ RSpec.describe "ログインに関するテスト", type: :system do
       expect(page).to have_selector '.alert-success'
       expect(current_path).to eq root_path
     end
-
+    #spaceを入れてしまうと確認メッセージでエラーが出るのでインデント崩しています
     it "有効なログイン後に退会ができる" do
       login_system(user)
       expect(current_path).to eq user_path(1)

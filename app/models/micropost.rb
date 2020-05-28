@@ -1,7 +1,8 @@
 class Micropost < ApplicationRecord
+  belongs_to :contributer, class_name: 'User', foreign_key: 'user_id'
   belongs_to :user
   validates :user_id, presence: true
-  validates :content, presence: true, length: { maximum: 20000 }
+  validates :content, presence: true, length: { maximum: 2500 }
   validates :name, presence: true, length: { maximum: 30 }
   validates :price, presence: true, length: { maximum: 30 }
   has_one_attached :picture
