@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'home_pages#home'
   get '/home',     to:'home_pages#home'
-  get '/timeline',     to:'home_pages#timeline'
+  get '/timeline', to:'home_pages#timeline'
   get '/about',    to:'home_pages#about'
   get '/help',     to:'home_pages#help'
   get '/contact',  to:'home_pages#contact'
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/login',    to:'sessions#new'
   post '/login',   to:'sessions#create'
   delete '/logout', to:'sessions#destroy'
+  get 'auth/:provider/callback', to: 'sessions#create'
   resources :users do
     member do
       get :following, :followers

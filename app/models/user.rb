@@ -1,12 +1,12 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
-  has_secure_password
-  validates :password, length: { minimum: 6 }, confirmation: true,
+  has_secure_password validations: false
+  validates :password, length: { minimum: 6 }, unless: :uid?, confirmation: true,
                        allow_nil: true
-  validates :name, presence: true, length: { maximum: 30 }
+  validates :name, presence: true, unless: :uid?, length: { maximum: 30 }
   validates :introduct, length: { maximum: 160 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
-  validates :email, presence: true, length: { maximum: 255 },
+  validates :email, presence: true, unless: :uid?, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   has_many :microposts, dependent: :destroy
@@ -82,5 +82,14 @@ class User < ApplicationRecord
 
   def forget
     update_attribute(:remember_digest, nil)
+  end
+
+  def self.find_or_create_from_auth(auth)
+    provider = auth[:provider]
+    uid = auth[:uid]
+    name = auth[:info][:name]
+    self.find_or_create_by(provider: provider, uid: uid) do |user|
+    user.name = name
+    end
   end
 end
