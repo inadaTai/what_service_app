@@ -1,14 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "Microposts", type: :system do
-  let(:user) { FactoryBot.create(:user) }
-  let(:micropost) do
-    user.microposts.build(name: "サービス題名", price: "月額500円", content: "良いサービス",
-                          picture: File.open("#{Rails.root}/db/images_seeds/1.png"), user_id: user.id)
-  end
+  let(:user) { create(:user) }
 
   def submit_valid_micropost
-    visit post_pages_path
     fill_in '記事の題名', with: 'フィットネスクラブ', match: :first
     fill_in 'サービスの金額を入力してください', with: '月額500円', match: :first
     fill_in '記事の内容', with: '良いサービス', match: :first
@@ -17,7 +12,6 @@ RSpec.describe "Microposts", type: :system do
   end
 
   def submit_invalid_micropost
-    visit post_pages_path
     fill_in '記事の題名', with: 'サービス題名', match: :first
     fill_in 'サービスの金額を入力してください', with: '月額500円', match: :first
     fill_in '記事の内容', with: 'a' * 2501, match: :first
@@ -28,6 +22,7 @@ RSpec.describe "Microposts", type: :system do
   context "有効な投稿一覧" do
     before do
       login_system(user)
+      visit post_pages_path
     end
 
     it "有効な投稿をした場合成功したメッセージが出ている" do
@@ -62,16 +57,18 @@ RSpec.describe "Microposts", type: :system do
   end
 
   context "無効な投稿一覧" do
-    it "記事の内容が2500文字を超える投稿は無効で尚且つエラーメッセージが出ている" do
+    before do
       login_system(user)
+      visit post_pages_path
+    end
+
+    it "記事の内容が2500文字を超える投稿は無効で尚且つエラーメッセージが出ている" do
       submit_invalid_micropost
       expect(current_path).to eq '/microposts'
       expect(page).to have_selector '.alert-danger'
     end
 
     it "値段項目のところで31文字を超える投稿は無効" do
-      login_system(user)
-      visit post_pages_path
       fill_in '記事の題名', with: 'サービス題名', match: :first
       fill_in 'サービスの金額を入力してください', with: 'a' * 31, match: :first
       fill_in '記事の内容', with: '良いサービス', match: :first
@@ -82,8 +79,6 @@ RSpec.describe "Microposts", type: :system do
     end
 
     it "記事の題名を31文字を超える投稿は無効" do
-      login_system(user)
-      visit post_pages_path
       fill_in '記事の題名', with: 'a' * 31, match: :first
       fill_in 'サービスの金額を入力してください', with: '月額500円', match: :first
       fill_in '記事の内容', with: '良いサービス', match: :first
@@ -94,8 +89,6 @@ RSpec.describe "Microposts", type: :system do
     end
 
     it "記事に画像が添付されていない投稿は無効" do
-      login_system(user)
-      visit post_pages_path
       fill_in '記事の題名', with: 'a' * 31, match: :first
       fill_in 'サービスの金額を入力してください', with: '月額500円', match: :first
       fill_in '記事の内容', with: '良いサービス', match: :first

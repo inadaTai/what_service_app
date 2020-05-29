@@ -26,11 +26,10 @@
     <% end %>
   </span>
   <div class="row">
-  <ul>
+  <ul class="comment_section">
       <li class="comment-create">
           <h3 class="text-left title">コメント広場</h3>
       </li>
-      <%= @comments.count %>件のコメント
       <div id="comments_area">
           <%= render partial: 'comments/index', locals: { comments: @comments } %>
       </div>

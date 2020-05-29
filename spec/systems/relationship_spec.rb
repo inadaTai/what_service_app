@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "フォローに関するテスト", type: :system do
-
   let(:user) { FactoryBot.create(:user) }
   let(:other_user) { FactoryBot.create(:other_user) }
 
@@ -30,13 +29,13 @@ RSpec.describe "フォローに関するテスト", type: :system do
 
     it "フォローしたらfollowingカウントが増える" do
       login_system(other_user)
-      expect{ valid_follow }.to change(other_user.following,:count).by(1)
+      expect { valid_follow }.to change(other_user.following, :count).by(1)
     end
 
     it "フォロー解除したらfollowersカウントが減る" do
       login_system(other_user)
       valid_follow
-      expect{ valid_unfollow }.to change(user.followers,:count).by(-1)
+      expect { valid_unfollow }.to change(user.followers, :count).by(-1)
     end
 
     it "ユーザーが他ユーザーをフォロー解除ができる", js: true do

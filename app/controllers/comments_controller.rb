@@ -1,13 +1,13 @@
 class CommentsController < ApplicationController
   before_action :logged_in_user
   def create
-    @micropost=Micropost.find(params[:micropost_id])
+    @micropost = Micropost.find(params[:micropost_id])
     @comment = @micropost.comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
       render :index
     else
-      flash[:danger]="無効な操作が行われました。"
+      flash[:danger] = "空欄または140文字以上のコメントは出来ません"
       redirect_to "/microposts/#{@micropost.id}"
     end
   end

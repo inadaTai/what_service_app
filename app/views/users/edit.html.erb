@@ -2,45 +2,38 @@
 <h1>プロフィール編集フォーム</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-  <p>現在のユーザー情報</p><br>
-  ユーザー名：<%= "#{@user.name}" %><br>
-  メールアドレス：<%= "#{@user.email}" %><br>
-  プロフィール欄：<%= "#{@user.introduct}" %><br><br>
-  <% if @user.picture.present? %>
-    アイコン画像：<%= image_tag @user.resize_edit_icon %>
-  <% else %>
-    アイコン画像：<img src="/default2.jpg" width="80px" height="80px">
-  <% end %>
+    <p>現在のユーザー情報</p><br>
+    ユーザー名：<%= "#{@user.name}" %><br>
+    メールアドレス：<%= "#{@user.email}" %><br>
+    プロフィール欄：<%= "#{@user.introduct}" %><br><br>
+    <% if @user.picture.present? %>
+      アイコン画像：<%= image_tag @user.resize_edit_icon %>
+    <% else %>
+      アイコン画像：<img src="/default2.jpg" width="80px" height="80px">
+    <% end %>
   </div>
 </div><br><br>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_with(model: @user, local: true) do |f| %>
-      <%= render 'share/error_messages', object: f.object %>
-
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
-
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
-
-      <%= f.label :introduct, "プロフィール(※160文字まで)" %>
-      <%= f.text_area :introduct, size: "5x5", class: 'form-control' %><br>
-
-      <%= f.label :picture, "アイコン画像設定" %>
-      <%= f.file_field :picture %><br>
-
-      <%= f.submit "設定変更を保存する", class: "btn btn-primary" %>
+    <%= render 'share/error_messages', object: f.object %>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+    <%= f.label :email %>
+    <%= f.email_field :email, class: 'form-control' %>
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form-control' %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: 'form-control' %>
+    <%= f.label :introduct, "プロフィール(※160文字まで)" %>
+    <%= f.text_area :introduct, size: "5x5", class: 'form-control' %><br>
+    <%= f.label :picture, "アイコン画像設定" %>
+    <%= f.file_field :picture %><br>
+    <%= f.submit "設定変更を保存する", class: "btn btn-primary" %>
     <% end %><br>
     <% if current_user?(@user) %>
-      <!-- 退会時の最終確認の文書でインデントを揃えると見栄えが悪くなるので、わざと崩しています -->
-      <br><button type="button" class="btn btn-warning btn-delete">
+    <!-- 退会時の最終確認の文書でインデントを揃えると見栄えが悪くなるので、わざと崩しています -->
+    <br><button type="button" class="btn btn-warning btn-delete">
       <%= link_to "What Service Appを退会", @user, method: :delete,
       data:{ confirm: "退会の手続きをされますと全てのサービスが利用不可となります、再度ご利用いただくには会員登録が必要となります。
 本当に退会してよろしいですか?"} %></button>

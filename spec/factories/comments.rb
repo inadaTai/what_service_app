@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :comment do
-    user { nil }
-    micropost { nil }
-    body { "MyText" }
+    association :user, factory: :other_user
+    association :micropost
+    body { "Testtext" }
   end
 end

@@ -4,7 +4,7 @@ FactoryBot.define do
     price { "月額500円" }
     name { "動画サービス" }
     content { "良い動画が多い" }
-    picture { File.open("#{Rails.root}/db/images_seeds/1.png") }
+    picture { attach_file 'micropost[picture]', "#{Rails.root}/db/images_seeds/1.png" }
     created_at { 10.minutes.ago }
     id { "1" }
   end
