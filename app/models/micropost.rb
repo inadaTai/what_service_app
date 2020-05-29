@@ -7,6 +7,7 @@ class Micropost < ApplicationRecord
   validates :price, presence: true, length: { maximum: 30 }
   has_one_attached :picture
   validate :picture_presence
+  has_many :comments, dependent: :destroy
 
   def picture_presence
     if picture.attached?

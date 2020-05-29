@@ -1,0 +1,63 @@
+<!-- コメント内容(２件) ------------------------------------------------------------------>
+<%= comments.count %>件コメント
+<h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">全部のコメントを見る</h6>
+<% comments.first(2).each do |comment| %>
+    <% unless comment.id.nil? %>
+    <li class="comment-container">
+        <div class="comment-box">
+            <div class="comment-text">
+            <% if comment.user.picture.present? %>
+              <%= image_tag comment.user.resize_home_icon %>
+            <% else %>
+              <img src="/default2.jpg" width="65px" height="65px">
+            <% end %>
+                <%= link_to "コメントユーザー：#{comment.user.name}", comment.user %>
+                <div class="comment-entry">
+                    <%= "コメント内容：#{comment.body}"  %>
+                    <% if comment.user == current_user %>
+                        <%= link_to micropost_comment_path(comment.micropost_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
+                            <p>コメント削除</p>
+                        <% end %>
+                    <% end %>
+                </div>
+                <span class="comment-date pull-right">
+                <%= "#{comment.created_at}" %>
+                </span>
+            </div>
+        </div>
+    </li>
+  <% end %>
+  <% end %>
+  <!-- コメント内容(3件目以降) ------------------------------------------------------------------>
+  <div class="collapse" id="collapseExample">
+          <% comments.offset(2).each do |comment| %>
+            <% unless comment.id.nil? %>
+              <li class="comment-container">
+                  <div class="comment-box">
+                      <div class="comment-avatar">
+ 
+                      </div>
+                      <div class="comment-text">
+                      <% if comment.user.picture.present? %>
+                        <%= image_tag comment.user.resize_home_icon %>
+                      <% else %>
+                        <img src="/default2.jpg" width="65px" height="65px">
+                      <% end %>
+                      <%= link_to "コメントユーザー：#{comment.user.name}", comment.user %>
+                          <div class="comment-entry">
+                              <%= "コメント内容：#{comment.body}" %>
+                              <% if comment.user == current_user %>
+                              <%= link_to micropost_comment_path(comment.micropost_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
+                                  <p>コメント削除</p>
+                              <% end %>
+                              <% end %>
+                          </div>
+                          <span class="comment-date pull-right">
+                                <%= comment.created_at %>
+                          </span>
+                      </div>
+                  </div>
+              </li>
+            <% end %>
+          <% end %>
+  </div>

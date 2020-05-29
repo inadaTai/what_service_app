@@ -22,9 +22,28 @@
     <% if current_user?(@micropost.user) %>
       <%= link_to "削除する", @micropost, method: :delete,
                                        data: { confirm: "投稿した記事を削除しますか？" } %>
-      <%= link_to "記事の修正を行う", edit_micropost_path(@micropost.id) %>
+      <p><%= link_to "記事の修正を行う", edit_micropost_path(@micropost.id) %></p>
     <% end %>
   </span>
+  <div class="row">
+  <ul>
+      <li class="comment-create">
+          <h3 class="text-left title">コメント広場</h3>
+      </li>
+      <%= @comments.count %>件のコメント
+      <div id="comments_area">
+          <%= render partial: 'comments/index', locals: { comments: @comments } %>
+      </div>
+  </ul>
+  <hr>
+  <% if logged_in? %>
+      <div class="comment-create">
+          <h3 class="text-left">コメントを投稿する</h3>
+          <p>※暴言、誹謗中傷などのコメントはお控えください</p>
+          <%= render partial: 'comments/comment_form', locals: { comment: @comment, micropost: @micropost } %>
+      </div>
+  <% end %>
+</div>
 </div>
 </div>
 </div>
