@@ -1,8 +1,8 @@
 <% provide(:page_title, 'プロフィール編集') %>
 <h1>プロフィール編集フォーム</h1>
-<div class="row">
+<div class="row current">
   <div class="col-md-6 col-md-offset-3">
-    <p>現在のユーザー情報</p><br>
+    <p>現在のユーザー情報</p>
     ユーザー名：<%= "#{@user.name}" %><br>
     メールアドレス：<%= "#{@user.email}" %><br>
     プロフィール欄：<%= "#{@user.introduct}" %><br><br>
@@ -15,17 +15,16 @@
 </div><br><br>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
+  <%= link_to "パスワード更新の方はこちら！", "/password_edits/edit" %>
   <% unless @user.sample? %>
     <%= form_with(model: @user, local: true) do |f| %>
     <%= render 'share/error_messages', object: f.object %>
     <%= f.label :name %>
     <%= f.text_field :name, class: 'form-control' %>
+  <% unless @user.uid? %>
     <%= f.label :email %>
     <%= f.email_field :email, class: 'form-control' %>
-    <%= f.label :password %>
-    <%= f.password_field :password, class: 'form-control' %>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, class: 'form-control' %>
+  <% end %>
     <%= f.label :introduct, "プロフィール(※160文字まで)" %>
     <%= f.text_area :introduct, size: "5x5", class: 'form-control' %><br>
     <%= f.label :picture, "アイコン画像設定" %>

@@ -265,3 +265,26 @@ p.all_view_comment{
   font-weight: bold;
   font-size: 1.2em;
 }
+
+/* パスワード編集ページ */
+div.password_edit{
+  white-space: pre-line;
+}
+
+/* ユーザー情報編集ページ */
+div.current{
+  white-space: pre-line;
+}
+
+/* ヘルプセンター */
+div.help_center{
+  white-space: pre-line;
+}
+ul.kantan{
+  list-style: none;
+}
+
+/* お問い合わせ */
+div.contact{
+  white-space: pre-line;
+}

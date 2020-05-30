@@ -9,6 +9,8 @@ ja:
         name: ユーザーネーム
         password: パスワード
         password_confirmation: パスワード（確認用）
+        current_password: 現在のパスワード
+        introduct: プロフィール
       micropost:
         name: 記事の題名
         price: サービスの金額を入力してください

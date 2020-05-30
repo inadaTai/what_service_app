@@ -16,11 +16,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+    if @user.password.present? && @user.save
       log_in @user
       flash[:success] = "会員登録が完了しました！"
       redirect_to @user
     else
+      flash.now[:danger] = "無効な入力があります。"
       render 'new'
     end
   end
@@ -40,7 +41,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "退会しました"
+    flash[:success] = "What Service Appを退会しました"
     redirect_to root_url
   end
 

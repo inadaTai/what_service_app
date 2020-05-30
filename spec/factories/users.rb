@@ -24,4 +24,13 @@ FactoryBot.define do
     id { "3" }
     sample { true }
   end
+
+  factory :face_user, class: "User" do
+    name { "face_user" }
+    email { "face@example.com" }
+    password { "foobar" }
+    password_confirmation { "foobar" }
+    id { "3" }
+    uid { "1" }
+  end
 end

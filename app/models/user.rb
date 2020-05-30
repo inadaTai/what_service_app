@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
+  attr_accessor :current_password
   has_secure_password validations: false
   validates :password, length: { minimum: 6 }, unless: :uid?, confirmation: true,
                        allow_nil: true
@@ -88,8 +89,8 @@ class User < ApplicationRecord
     provider = auth[:provider]
     uid = auth[:uid]
     name = auth[:info][:name]
-    self.find_or_create_by(provider: provider, uid: uid) do |user|
-    user.name = name
+    find_or_create_by(provider: provider, uid: uid) do |user|
+      user.name = name
     end
   end
 end
