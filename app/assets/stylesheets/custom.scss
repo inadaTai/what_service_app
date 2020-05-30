@@ -65,7 +65,7 @@ footer ul {
   float: right;
   list-style: none;
 }
-  
+
 footer ul li {
   float: left;
   margin-left: 15px;
@@ -253,4 +253,15 @@ span.user{
 /* コメントのレイアウト */
 ul.comment_section{
   list-style: none;
+}
+
+h6.more{
+  font-weight: bold;
+  font-size: 1.3em;
+  color: blue;
+}
+
+p.all_view_comment{
+  font-weight: bold;
+  font-size: 1.2em;
 }

@@ -15,6 +15,7 @@
 </div><br><br>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
+  <% unless @user.sample? %>
     <%= form_with(model: @user, local: true) do |f| %>
     <%= render 'share/error_messages', object: f.object %>
     <%= f.label :name %>
@@ -31,12 +32,17 @@
     <%= f.file_field :picture %><br>
     <%= f.submit "設定変更を保存する", class: "btn btn-primary" %>
     <% end %><br>
-    <% if current_user?(@user) %>
-    <!-- 退会時の最終確認の文書でインデントを揃えると見栄えが悪くなるので、わざと崩しています -->
-    <br><button type="button" class="btn btn-warning btn-delete">
+  <% else %>
+    かんたんログインユーザーは編集操作ができません<br>
+  <% end %>
+    <% if current_user?(@user) && !@user.sample? %>
+      <!-- 退会時の最終確認の文書でインデントを揃えると見栄えが悪くなるので、わざと崩しています -->
+      <br><button type="button" class="btn btn-warning btn-delete">
       <%= link_to "What Service Appを退会", @user, method: :delete,
       data:{ confirm: "退会の手続きをされますと全てのサービスが利用不可となります、再度ご利用いただくには会員登録が必要となります。
 本当に退会してよろしいですか?"} %></button>
+    <% else %>
+      かんたんログインユーザーは退会できません<br>
     <% end %>
   </div>
 </div>

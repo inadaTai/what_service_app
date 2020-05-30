@@ -41,4 +41,10 @@
 <p>このサービスを通してあなたも利用中または利用していたサービスの情報を共有しませんか？</p>
 <p>これより先の全ての記事を見る場合は新規会員登録が必要となります。</p>
 <%= link_to "新規登録", signup_path, class: "btn btn-lg btn-success" %><br>
+<br><p>お試しでサイトを閲覧できます！</p>
+<%= form_with(scope: :session, url: login_path, local: true) do |f| %>
+  <%= f.hidden_field :email ,value: "test@example.com" %>
+  <%= f.hidden_field :password ,value: "foobar" %>
+  <%= f.submit "かんたんログイン", class: "btn btn-warning" %>
+<% end %>
 <% end %>

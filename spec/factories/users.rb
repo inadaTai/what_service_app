@@ -15,4 +15,13 @@ FactoryBot.define do
     password_confirmation { "foobar2" }
     id { "2" }
   end
+
+  factory :test_user, class: "User" do
+    name { "test_user" }
+    email { "test@example.com" }
+    password { "foobar" }
+    password_confirmation { "foobar" }
+    id { "3" }
+    sample { true }
+  end
 end

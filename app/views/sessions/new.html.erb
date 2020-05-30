@@ -16,6 +16,13 @@
     <% end %>
     <br><%= f.submit "What Service Appへログイン", class: "btn btn-success" %><br>
     <% end %>
+
+    <br><p>お試しでサイトを閲覧できます！</p>
+    <%= form_with(scope: :session, url: login_path, local: true) do |f| %>
+      <%= f.hidden_field :email ,value: "test@example.com" %>
+      <%= f.hidden_field :password ,value: "foobar" %>
+      <%= f.submit "かんたんログイン", class: "btn btn-warning" %>
+    <% end %>
     <br><p>他のプラットフォームからログイン可能です！</p>
     <p><%= link_to "Twitterアカウントでログイン",'#', class: "btn btn-info"  %></p>
     <p><%= link_to "Facebookアカウントでログイン",'#', class: "btn btn-primary" %></p>

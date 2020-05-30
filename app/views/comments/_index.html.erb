@@ -1,7 +1,6 @@
-<!-- コメント内容(２件) ------------------------------------------------------------------>
-<%= comments.count %>件のコメント
-<h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">全部のコメントを見る</h6>
-<% comments.first(2).each do |comment| %>
+<!-- コメント内容(10件) ------------------------------------------------------------------>
+<p class="all_view_comment"><%= comments.count %>件のコメント</p>
+<% comments.first(10).each do |comment| %>
 <% unless comment.id.nil? %>
 <li class="comment-container">
   <div class="comment-box">
@@ -13,24 +12,25 @@
       <% end %>
       <%= link_to "コメントユーザー：#{comment.user.name}", comment.user %>
       <div class="comment-entry">
-        <%= "コメント内容：#{comment.body}"  %>
+        <p><%= "コメント内容：#{comment.body}" %></p>
         <% if comment.user == current_user %>
         <%= link_to micropost_comment_path(comment.micropost_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
-        <p>コメント削除</p>
+        コメント削除
         <% end %>
         <% end %>
       </div>
       <span class="comment-date pull-right">
-        <%= "#{comment.created_at}" %>
+      <%= "#{time_ago_in_words(comment.created_at)}前" %>
       </span>
     </div>
   </div>
 </li>
 <% end %>
 <% end %>
-<!-- コメント内容(3件目以降) ------------------------------------------------------------------>
+<h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">全体のコメントを見る</h6>
+<!-- コメント内容(10件目以降) ------------------------------------------------------------------>
 <div class="collapse" id="collapseExample">
-  <% comments.offset(2).each do |comment| %>
+  <% comments.offset(10).each do |comment| %>
   <% unless comment.id.nil? %>
   <li class="comment-container">
     <div class="comment-box">
@@ -50,7 +50,7 @@
           <% end %>
         </div>
         <span class="comment-date pull-right">
-          <%= comment.created_at %>
+        <%= "#{time_ago_in_words(comment.created_at)}前" %>
         </span>
       </div>
     </div>

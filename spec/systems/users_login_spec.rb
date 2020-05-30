@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "ログインに関するテスト", type: :system do
   let(:user) { create(:user) }
   let(:other_user) { create(:other_user) }
+  let(:test_user) { create(:test_user) }
 
   def submit_invalid
     fill_in 'メールアドレス', with: ''
@@ -67,6 +68,15 @@ RSpec.describe "ログインに関するテスト", type: :system do
       page.driver.browser.switch_to.alert.accept
       expect(page).to have_selector '.alert-success'
       expect(current_path).to eq root_path
+    end
+
+    it "かんたんログインユーザーはプロフィール編集と退会が不可" do
+      visit root_path
+      login_system(test_user)
+      click_on 'アカウント'
+      click_on '設定'
+      expect(page).to have_content "かんたんログインユーザーは編集操作ができません"
+      expect(page).to have_content "かんたんログインユーザーは退会できません"
     end
   end
 end
