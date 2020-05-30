@@ -20,7 +20,28 @@ class User < ApplicationRecord
                                    dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  validate :picture_presence
+  validate :picture_size
   has_many :comments, dependent: :destroy
+  has_many :favorite_relationships, dependent: :destroy
+  has_many :likes, through: :favorite_relationships, source: :micropost
+
+  def picture_presence
+    if picture.blank?
+      if !picture.content_type.in?(%('image/jpeg image/png'))
+        errors.add(:picture, '添付にはjpegまたはpngファイルを添付してください')
+      end
+    end
+  end
+
+  def picture_size
+    if picture.blank?
+      if picture.blob.byte_size > 5.megabytes
+        picture.purge
+        errors.add(:picture, '5MBを超える画像データは添付が出来ません。')
+      end
+    end
+  end
 
   def follow(other_user)
     following << other_user
@@ -62,6 +83,7 @@ class User < ApplicationRecord
   end
 
   # rubocop:enable all
+
   def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
@@ -92,5 +114,17 @@ class User < ApplicationRecord
     find_or_create_by(provider: provider, uid: uid) do |user|
       user.name = name
     end
+  end
+
+  def like(micropost)
+    likes << micropost
+  end
+
+  def unlike(micropost)
+    favorite_relationships.find_by(micropost_id: micropost.id).destroy
+  end
+
+  def likes?(micropost)
+    likes.include?(micropost)
   end
 end

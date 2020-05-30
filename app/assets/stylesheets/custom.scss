@@ -246,12 +246,16 @@ div.post-title{
   font-size: 1.3em;
 }
 
+.micropost_section{
+  white-space: pre-line;
+}
+
 span.user{
   font-weight: bold;
   font-size: 1.1em;
 }
 /* コメントのレイアウト */
-ul.comment_section{
+div.comment_section{
   list-style: none;
 }
 
@@ -287,4 +291,17 @@ ul.kantan{
 /* お問い合わせ */
 div.contact{
   white-space: pre-line;
+}
+
+/* いいねボタン */
+
+.glyphicon-heart {
+  color: red;
+}
+.btn-default:hover > .glyphicon-heart-empty {
+  color: red;
+}
+.btn-default {
+  position: relative;
+  left: 30px;
 }

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :following, :followers, :likes]
   before_action :correct_user,   only: [:edit, :update, :destroy]
   def index
     @users = User.paginate(page: params[:page], per_page: 20)
@@ -46,17 +46,24 @@ class UsersController < ApplicationController
   end
 
   def following
-    @title = "following"
+    @title = "フォロー"
     @user = User.find(params[:id])
     @users = @user.following.paginate(page: params[:page])
     render 'show_follow'
   end
 
   def followers
-    @title = "followers"
+    @title = "フォロワー"
     @user = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
+  end
+
+  def likes
+    @title = "Likes"
+    @user  = User.find(params[:id])
+    @microposts = @user.likes.paginate(page: params[:page])
+    render 'show_like'
   end
 
   private

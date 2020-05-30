@@ -1,26 +1,21 @@
 <% provide(:page_title, "#{@title}" ) %>
 <div class="row">
   <aside class="col-md-4">
-    <section class="user_info">
-    <% if @user.picture.present? %>
-      <%= image_tag @user.resize_home_icon %>
-    <% else %>
-      <img src="/default2.jpg" width="65px" height="65px">
-    <% end %>
-      <h1><%= @user.name %></h1>
-      <span><%= link_to "プロフィール", @user %></span>
-      <span><%= link_to "投稿数:#{@user.microposts.count}", @user %></span>
-      <span><%= "#{@user.introduct}" %></span>
-    </section>
-    <section class="stats">
+  <section class="user_info">
+    <%= render 'share/user_status' %>
+  </section>
+    <section class="status">
       <%= render 'share/follow_status' %>
+    </section>
       <% if @users.any? %>
         <div class="user_avatars">
           <% @users.each do |user| %>
-            <% if user.picture.present? %>
-              <%= image_tag user.resize_follow_icon %>
-            <% else %>
-              <img src="/default2.jpg" width="30px" height="30px">
+            <%= link_to user do %>
+              <% if user.picture.present? %>
+                <%= image_tag user.resize_follow_icon %>
+              <% else %>
+                <img src="/default2.jpg" width="30px" height="30px">
+              <% end %>
             <% end %>
           <% end %>
         </div>

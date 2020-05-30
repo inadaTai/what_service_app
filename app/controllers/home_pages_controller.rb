@@ -2,6 +2,7 @@ class HomePagesController < ApplicationController
   before_action :logged_in_user, only: [:post_pages, :timeline]
   MAX_RELOAD_POST = 15
   MAX_POST = 5
+
   def home
     if logged_in?
       @feed_items = current_user.feed.order(created_at: :desc).paginate(page: params[:page]).limit(MAX_RELOAD_POST)
@@ -12,7 +13,9 @@ class HomePagesController < ApplicationController
 
   def timeline
     if logged_in?
-      @feed_items = current_user.follower_feed.order(created_at: :desc).paginate(page: params[:page])
+      @user = current_user
+      @feed_items = current_user.follower_feed.where.not(user_id: current_user.id).order(created_at: :desc).
+        paginate(page: params[:page])
     end
   end
 

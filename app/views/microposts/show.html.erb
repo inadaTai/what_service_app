@@ -8,32 +8,44 @@
     <img src="/default2.jpg" width="65px" height="65px">
   <% end %>
   <span class="user">投稿主：<%= link_to "#{@micropost.user.name}", @micropost.user  %></span><br>
-  <span class="micropost_content" style="white-space: pre-line">
-  ①サービスの名前<br><%= "#{@micropost.name}" %><br>
-  ②サービスの金額<br><%= "#{@micropost.price}" %><br>
+  <span class="micropost_content">
+  ①サービスの名前<br><%= "#{@micropost.name}" %><br><br>
+  ②サービスの金額<br><%= "#{@micropost.price}" %><br><br>
     <% if @micropost.picture.attached? %>
       <div class="log-picture">
-        ③画像<br><%= image_tag @micropost.resize_picture %>
+        ③画像<br><%= image_tag @micropost.resize_picture %><br><br>
       </div>
     <% else %>
-      ③画像<br>画像が選択されていません。
+      ③画像<br>画像が選択されていません。<br><br>
     <% end %>
-    ④サービスの内容：<br><%= "#{@micropost.content}" %><br>
+    <span class="micropost_section">
+      ④サービスの内容：<br><%= "#{@micropost.content}" %><br>
+    </span>
     <% if current_user?(@micropost.user) %>
       <%= link_to "削除する", @micropost, method: :delete,
                                        data: { confirm: "投稿した記事を削除しますか？" } %>
       <p><%= link_to "記事の修正を行う", edit_micropost_path(@micropost.id) %></p>
+    <% end %><br>
+    <span class="like" id="like_form_<%= @micropost.id %>">
+    <% if logged_in? && !current_user?(@micropost.user) %>
+      <% if @micropost.liked_by.include?(current_user) %>
+        <%= render "microposts/unlike", micropost: @micropost %>
+      <% else %>
+        <%= render "microposts/like", micropost: @micropost %>
+      <% end %>
     <% end %>
+    </span>
+</li>
   </span>
   <div class="row">
-  <ul class="comment_section">
-      <li class="comment-create">
+  <div class="comment_section">
+      <div class="comment-create">
           <h3 class="text-left title">コメント広場</h3>
-      </li>
+      </div>
       <div id="comments_area">
           <%= render partial: 'comments/index', locals: { comments: @comments } %>
       </div>
-  </ul>
+  </div>
   <hr>
   <% if logged_in? %>
       <div class="comment-create">
