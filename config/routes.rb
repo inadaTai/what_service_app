@@ -28,4 +28,5 @@ Rails.application.routes.draw do
   resources :relationships,   only: [:create, :destroy]
   resources :password_edits, only: [:show, :edit, :update]
   resources :favorite_relationships, only: [:create, :destroy]
+  resources :notifications, only: :index
 end

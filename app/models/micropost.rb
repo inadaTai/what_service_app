@@ -5,12 +5,13 @@ class Micropost < ApplicationRecord
   validates :content, presence: true, length: { maximum: 2500 }
   validates :name, presence: true, length: { maximum: 30 }
   validates :price, presence: true, length: { maximum: 30 }
-  has_one_attached :picture
+  has_one_attached :picture, dependent: :destroy
   validate :picture_presence
   validate :picture_size
   has_many :comments, dependent: :destroy
   has_many :favorite_relationships, dependent: :destroy
   has_many :liked_by, through: :favorite_relationships, source: :user
+  has_many :notifications, dependent: :destroy
 
   def picture_presence
     if picture.attached?
@@ -23,10 +24,9 @@ class Micropost < ApplicationRecord
   end
 
   def picture_size
-    if picture.blank?
+    if picture.attached?
       if picture.blob.byte_size > 5.megabytes
-        picture.purge
-        errors.add(:picture, '5MBを超える画像データは添付が出来ません。')
+        errors.add(:picture, 'で5MBを超える画像データは添付が出来ません。')
       end
     end
   end
@@ -45,5 +45,23 @@ class Micropost < ApplicationRecord
 
   def unlike(micropost)
     favorite_relationships.find_by(micropost_id: micropost.id).destroy
+  end
+
+  def create_notification_by(current_user)
+    @notification = current_user.active_notifications.new(
+      micropost_id: id,
+      visited_id: contributer.id,
+      action: "like"
+    )
+    @notification.save if @notification.valid?
+  end
+
+  def delete_notification_by(current_user)
+    @notification = current_user.active_notifications.find_by(
+      micropost_id: id,
+      visited_id: contributer.id,
+      action: "like"
+    )
+    @notification.destroy if !@notification.nil?
   end
 end

@@ -54,6 +54,12 @@ RSpec.describe "Microposts", type: :system do
       click_on '編集を反映する'
       expect(page).to have_selector '.alert-success'
     end
+
+    it "ユーザーが削除された場合は記事も削除される" do
+      submit_valid_micropost
+      visit current_path
+      expect{user.destroy}.to change{ Micropost.count }.by(-1)
+    end
   end
 
   context "無効な投稿一覧" do

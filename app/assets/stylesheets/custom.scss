@@ -254,6 +254,26 @@ span.user{
   font-weight: bold;
   font-size: 1.1em;
 }
+
+div.service_name{
+  padding-top: 10px;
+}
+
+div.service_price{
+  padding-top: 25px;
+}
+
+div.log-picture{
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+div.table_content{
+  border: 3px solid #eaeaea;
+  position: fixed;
+  left: 75%;
+}
+
 /* コメントのレイアウト */
 div.comment_section{
   list-style: none;
@@ -304,4 +324,15 @@ div.contact{
 .btn-default {
   position: relative;
   left: 30px;
+}
+
+/* 通知ページ */
+div.notification_user{
+  padding: 8px 15px;
+  border: 1px solid #eaeaea;
+}
+i.notification-circle{
+  color: red;
+  position: relative;
+  top: -10px;
 }
