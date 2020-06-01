@@ -8,12 +8,13 @@
   </div>
     <div class="col-md-7 col-md-offset-1">
       <p><%= @alert unless @alert.nil? %></p>
+      <h4 class="sub-title"><%= @title if !@title.nil? %></h4>
       <% if @microposts.nil? or @microposts.blank? %>
         <p><%= "'#{params[:search]}'と一致する記事はありません。" %></p>
       <% else %>
-        <ol class="user-posts">
-          <%= render @microposts %>
-        </ol>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
         <%= will_paginate @microposts, previous_label: '&lt 前へ', next_label: '次へ &gt' %>
       <% end %>
     </div>

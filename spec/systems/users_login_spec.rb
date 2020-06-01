@@ -40,7 +40,8 @@ RSpec.describe "ログインに関するテスト", type: :system do
       login_system(user)
       expect(current_path).to eq user_path(1)
       expect(page).to have_selector '.alert-success'
-      click_on 'アカウント'
+      link = find('#picture_dropdown')
+      link.click
       click_on 'ログアウト'
       expect(current_path).to eq root_path
     end
@@ -60,7 +61,8 @@ RSpec.describe "ログインに関するテスト", type: :system do
       login_system(user)
       expect(current_path).to eq user_path(1)
       expect(page).to have_selector '.alert-success'
-      click_on 'アカウント'
+      link = find('#picture_dropdown')
+      link.click
       click_on '設定'
       click_on 'What Service Appを退会', match: :first
       expect(page.driver.browser.switch_to.alert.text).to eq "退会の手続きをされますと全てのサービスが利用不可となります、再度ご利用いただくには会員登録が必要となります。
@@ -73,7 +75,8 @@ RSpec.describe "ログインに関するテスト", type: :system do
     it "かんたんログインユーザーはプロフィール編集と退会が不可" do
       visit root_path
       login_system(test_user)
-      click_on 'アカウント'
+      link = find('#picture_dropdown')
+      link.click
       click_on '設定'
       expect(page).to have_content "かんたんログインユーザーは編集操作ができません"
       expect(page).to have_content "かんたんログインユーザーは退会できません"

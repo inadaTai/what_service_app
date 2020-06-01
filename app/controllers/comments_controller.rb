@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
   include NotificationsHelper
-  @@action_name = "comment"
+  @@action_name = "comment" # rubocop:disable all
 
   def create
     @micropost = Micropost.find(params[:micropost_id])

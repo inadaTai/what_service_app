@@ -24,7 +24,8 @@ RSpec.describe "Comments", type: :system do
     it "未ログインのユーザーはコメント入力欄がない" do
       login_system(user)
       submit_valid_micropost
-      click_on 'アカウント'
+      link = find('#picture_dropdown')
+      link.click
       click_on 'ログアウト'
       click_on 'フィットネスクラブ'
       expect(page).not_to have_content "comment_body"

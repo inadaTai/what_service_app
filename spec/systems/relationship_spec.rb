@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "フォローに関するテスト", type: :system do
-  let(:user) { FactoryBot.create(:user) }
-  let(:other_user) { FactoryBot.create(:other_user) }
+  let(:user) { create(:user) }
+  let(:other_user) { create(:other_user) }
 
   def valid_follow
     visit '/users/1'
