@@ -1,9 +1,17 @@
 <li id="micropost-<%= micropost.id %>">
 <div class="post-icon">
-  <% if micropost.user.picture.present? %>
+<ul class="dropdown">
+<a href="micropost.user" class="dropdown-toggle" data-toggle="dropdown">
+  <%= link_to micropost.user do %>
+    <% if micropost.user.picture.present? %>
     <%= image_tag micropost.user.resize_home_icon %>
   <% else %>
     <img src="/default2.jpg" width="65px" height="65px">
+  <% end %>
+    </a>
+    <div class="dropdown-menu">
+    <%= render "share/user_status_drop", user: micropost.user %>
+    </ul>
   <% end %>
   </div>
   <span class="user"><%= link_to "投稿者：#{micropost.user.name}", micropost.user %></span><br>
@@ -14,3 +22,5 @@
     投稿日 <%= "#{time_ago_in_words(micropost.created_at)}前" %> 
   </span>
 </li>
+
+

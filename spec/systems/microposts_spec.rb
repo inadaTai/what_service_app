@@ -58,7 +58,7 @@ RSpec.describe "Microposts", type: :system do
     it "ユーザーが削除された場合は記事も削除される" do
       submit_valid_micropost
       visit current_path
-      expect{user.destroy}.to change{ Micropost.count }.by(-1)
+      expect { user.destroy }.to change(Micropost, :count).by(-1)
     end
   end
 

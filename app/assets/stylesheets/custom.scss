@@ -136,6 +136,18 @@ div.policy{
   }
 }
 
+ul.dropdown{
+  padding-inline-start: 0;
+}
+
+ul.dropdown:hover > .dropdown-menu{
+  display: block;
+  padding: 20px 40px;
+  float: left;
+}
+div.drop_user_status{
+  padding: 20px 40px;
+  }
 /* sidebar */
 
 aside {

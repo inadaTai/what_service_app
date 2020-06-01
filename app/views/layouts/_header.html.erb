@@ -10,10 +10,13 @@
             <b class="caret"></b>
           </a>
           <ul class="dropdown-menu">
-           <li><%= form_tag(root_path, :method => 'get' ) do %>
-            <%= text_field_tag :search, params[:search] %>
-            <%= submit_tag '検索', :name => nil %>
-          <% end %></li>
+            <li>
+              <p><%= form_with url: searches_path, method: :get, local: true do |f| %>
+                <%= text_field_tag :search, params[:search], placeholder: "全体記事を検索" %>
+                <%= submit_tag '検索', :name => nil %>
+              <% end %></p>
+              <%= link_to "ユーザー検索の場合はこちらをクリック", users_path, class: "btn btn-info" %>
+            </li>
         </div>
         <div class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">

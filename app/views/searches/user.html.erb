@@ -1,0 +1,20 @@
+<% provide(:page_title, "ユーザー検索") %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 none" id="account_contents" >
+      <%= render 'share/user_status' %>
+    </div>
+    <div class="user-contents col-md-8" id="multiple_contents">
+      <%= @alert unless @alert.nil? %>
+      <h4 class="sub-title"><%= @page_title if !@page_title.nil? %></h4>
+      <% if @musers.nil? or @users.blank? %>
+        <p><%= "'#{params[:search]}'と一致する記事はありません。" %></p>
+      <% else %>
+        <ul class="user-posts">
+          <%= render @users %>
+        </ul>
+        <%= will_paginate @users %>
+      <% end %>
+    </div>
+  </div>
+</div>

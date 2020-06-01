@@ -1,0 +1,20 @@
+<% provide(:page_title, "検索結果") %>
+  <div class="row">
+  <div class="col-md-3">
+    <p>メニュー</p>
+    <p><%= link_to "ユーザー検索を使う", users_path %></p>
+    <p><%= link_to "フォローしている人の記事を見にいく", timeline_path %></p>
+    <p><%= link_to "TOPへ戻る", root_path %></p>
+  </div>
+    <div class="col-md-7 col-md-offset-1">
+      <p><%= @alert unless @alert.nil? %></p>
+      <% if @microposts.nil? or @microposts.blank? %>
+        <p><%= "'#{params[:search]}'と一致する記事はありません。" %></p>
+      <% else %>
+        <ol class="user-posts">
+          <%= render @microposts %>
+        </ol>
+        <%= will_paginate @microposts, previous_label: '&lt 前へ', next_label: '次へ &gt' %>
+      <% end %>
+    </div>
+  </div>

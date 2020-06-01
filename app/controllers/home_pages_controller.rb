@@ -5,7 +5,7 @@ class HomePagesController < ApplicationController
 
   def home
     if logged_in?
-      @feed_items = current_user.feed.order(created_at: :desc).paginate(page: params[:page]).limit(MAX_RELOAD_POST).search(params[:search])
+      @feed_items = current_user.feed.order(created_at: :desc).paginate(page: params[:page]).limit(MAX_RELOAD_POST)
     else
       @feed_items = Micropost.all.order(created_at: :desc).limit(MAX_POST)
     end

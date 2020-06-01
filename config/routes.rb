@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'searches/index'
   get 'likes/create'
   get 'likes/destroy'
   root 'home_pages#home'
@@ -29,4 +30,5 @@ Rails.application.routes.draw do
   resources :password_edits, only: [:show, :edit, :update]
   resources :favorite_relationships, only: [:create, :destroy]
   resources :notifications, only: :index
+  resources :searches, only: [:index, :new, :show, :user]
 end

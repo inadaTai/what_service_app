@@ -18,7 +18,7 @@
     <% end %>
   </aside>
   <div class="col-md-6 col-md-offset-1">
-    <h3>全体投稿記事一覧</h3>
+    <h3>全体投稿記事一覧<%= "(#{Micropost.all.count})" %></h3>
     <%= render 'share/feed' %>
   </div>
 </div>

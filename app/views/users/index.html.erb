@@ -1,7 +1,18 @@
 <% provide(:page_title, 'ユーザー 一覧') %>
 <h1>ユーザー　一覧ページ</h1>
 <%= will_paginate previous_label: '&lt 前へ', next_label: '次へ &gt' %>
+<%= @alert unless @alert.nil? %>
+<div>
+  <%= form_with url: users_path, method: :get, local: true do |f| %>
+    <%= text_field_tag :search, params[:search], placeholder: "全体ユーザーを検索" %>
+    <%= submit_tag '検索', :name => nil %>
+  <% end %>
+</div>
+<% if @users.nil? or @users.blank? %>
+  <p><%= "'#{params[:search]}'と一致する記事はありません。" %></p>
+<% else %>
 <ul class="users">
   <%= render @users %>
 </ul>
+<% end %>
 <%= will_paginate previous_label: '&lt 前へ', next_label: '次へ &gt' %>
