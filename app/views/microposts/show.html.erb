@@ -7,17 +7,17 @@
   <% else %>
     <img src="/default2.jpg" width="65px" height="65px">
   <% end %>
-  <span class="user" id="service_name1">投稿主：<%= link_to "#{@micropost.user.name}", @micropost.user  %></span>
+  <span class="user">投稿主：<%= link_to "#{@micropost.user.name}", @micropost.user  %></span>
   <span class="micropost_content">
-  <div class="service_name">①サービスの名前</div><%= "#{@micropost.name}" %><br id="service_price2">
-  <div class="service_price">②サービスの金額</div><%= "#{@micropost.price}" %><br  id="service_picture3">
+  <div class="service_name" id="service_name1">①サービスの名前</div><%= "#{@micropost.name}" %>
+  <div class="service_price" id="service_price2">②サービスの金額</div><%= "#{@micropost.price}" %>
     <% if @micropost.picture.attached? %>
-      <br>③画像<br><%= image_tag @micropost.resize_picture %><p id="service_content4"></p><br>
+    <div class="service_picture" id="service_picture3">③画像</div><div class="picture_section"><%= image_tag @micropost.resize_picture %></div>
     <% else %>
-      ③画像<br>画像が選択されていません。<br>
+    <div class="service_picture" id="service_picture3">③画像</div><div class="picture_section">画像が選択されていません。</div>
     <% end %>
     <span class="micropost_section">
-      ④サービスの内容<br><%= "#{@micropost.content}" %><br>
+    <div class="service_content" id="service_content4">④サービスの内容</div><br><%= "#{@micropost.content}" %><br>
     </span>
     <% if current_user?(@micropost.user) %>
       <%= link_to "削除する", @micropost, method: :delete,
@@ -35,7 +35,7 @@
     </span>
 </li>
   </span>
-  <div class="row">
+  <div class="row" id="service_comment5">
   <div class="comment_section">
       <div class="comment-create">
           <h3 class="text-left title">コメント広場</h3>
@@ -56,10 +56,11 @@
 </div>
 </div>
 <div class="col-md-2 table_content">
-<p>記事内の目次</p>
-<p><%= link_to "①サービス名" , { anchor: "service_name1" } %></p>
-<p><%= link_to "②サービス料金" , { anchor: "service_price2" } %></p>
-<p><%= link_to "③画像" , { anchor: "service_picture3" } %></p>
-<p><%= link_to "④サービスの内容" , { anchor: "service_content4" } %></p>
+  <p>記事内の目次</p>
+  <p><%= link_to "①サービス名" , { anchor: "service_name1" } %></p>
+  <p><%= link_to "②サービス料金" , { anchor: "service_price2" } %></p>
+  <p><%= link_to "③画像" , { anchor: "service_picture3" } %></p>
+  <p><%= link_to "④サービスの内容" , { anchor: "service_content4" } %></p>
+  <p><%= link_to "※コメント" , { anchor: "service_comment5" } %></p>
 </div>
 </div>

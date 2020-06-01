@@ -19,6 +19,7 @@ gem 'aws-sdk-s3'
 gem 'mini_magick', '4.10.1'
 gem 'omniauth', '1.9.1'
 gem 'omniauth-facebook', '6.0.0'
+gem 'omniauth-twitter'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 # Reduces boot times through caching; required in config/boot.rb

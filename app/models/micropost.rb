@@ -64,4 +64,12 @@ class Micropost < ApplicationRecord
     )
     @notification.destroy if !@notification.nil?
   end
+
+  def self.search(search)
+    if search
+      where(['content LIKE ?', "%#{search}%"])
+    else
+      redirect_to users_path
+    end
+  end
 end

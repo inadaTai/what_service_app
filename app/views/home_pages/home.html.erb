@@ -10,7 +10,7 @@
     </section>
     <p><%= link_to "記事を投稿する", post_pages_path, class: "btn btn-primary" %></p>
     <div class="relation_article">
-      <p>メニュー</p>
+      <p>ステータスメニュー</p>
     </div>
     <p><%= link_to "フォローしている人の記事を見にいく", timeline_path %></p>
     <% if unchecked_notifications.any? %>
@@ -30,11 +30,15 @@
   <div class="row">
     <div class="col-md-6">
       <p>フェイスブックアカウトをお持ちの方は</p>
-      <%= link_to "Facebookアカウントでログイン！", "/auth/facebook", class: "btn btn-lg btn-primary" %>
+      <%= link_to "/auth/facebook", class: "btn btn-lg btn-primary" do %>
+        <i class="fab fa-facebook"></i> Facebookアカウントでログイン!
+        <% end %>
     </div>
     <div class="col-md-6">
       <p>ツイッターアカウトをお持ちの方は</p>
-      <%= link_to "Twitterアカウントでログイン！",'#',class: "btn btn-lg btn-info" %>
+      <%= link_to "/auth/twitter", class: "btn btn-lg btn-info" do %>
+        <i class="fab fa-twitter"></i> Twitterアカウントでログイン！
+      <% end %>
     </div>
   </div>
 </div>

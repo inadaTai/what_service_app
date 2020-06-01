@@ -4,15 +4,15 @@
 <%= render 'share/error_messages', object: f.object %>
 <div class="field">
   <%= f.label :name, "記事の題名" %>
-  <%= f.text_area :name, class: 'form-control', placeholder: "(例：月額制動画ストリーミングサービス)" %>
+  <%= f.text_area :name, class: 'form-control', placeholder: "(※30文字まで)(例：月額制動画ストリーミングサービス)" %>
 </div>
 <div class="field">
   <%= f.label :price, "サービスの金額を入力してください" %>
-  <%= f.text_area :price, class: 'form-control', placeholder: "(例：月額3000円...等)" %>
+  <%= f.text_area :price, class: 'form-control', placeholder: "(※30文字まで)(例：月額3000円...等)" %>
 </div>
 <div class="field">
   <%= f.label :content, "記事の内容" %>
-  <%= f.text_area :content, size: "20x30", class: 'form-control', placeholder: "記事の内容" %>
+  <%= f.text_area :content, size: "20x30", class: 'form-control', placeholder: "(※2500文字まで)記事の内容" %>
 </div><br>
 <p>現在掲載している画像</p>
 <% if @micropost.picture.attached? %>

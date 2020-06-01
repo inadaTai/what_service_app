@@ -24,8 +24,12 @@
       <%= f.submit "かんたんログイン", class: "btn btn-warning" %>
     <% end %>
     <br><p>他のプラットフォームからログイン可能です！</p>
-    <p><%= link_to "Twitterアカウントでログイン",'#', class: "btn btn-info"  %></p>
-    <p><%= link_to "Facebookアカウントでログイン",'#', class: "btn btn-primary" %></p>
+    <p><%= link_to  "/auth/twitter", class: "btn btn-info" do %>
+      <i class="fab fa-twitter"></i> ツイッターアカウントでログイン
+      <% end %></p>
+    <p><%= link_to "/auth/facebook", class: "btn btn-primary" do %>
+    <i class="fab fa-facebook"></i> Facebookアカウントでログイン
+    <% end %></p>
     <p>アカウントをお持ちでない方はこちら！</p>
     <p><%= link_to "新規会員登録", signup_path, class: "btn btn-success" %></p>
   </div>

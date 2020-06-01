@@ -44,10 +44,34 @@ p{
   margin-right: 10px;
   padding-top: 9px;
   border-top: 1px solid #eaeaea;
-  font-size: 1.7em;
-  text-transform: uppercase;
+  font-size: 1.4em;
   letter-spacing: -1px;
   color: orange;
+}
+nav.nav_header{
+  position: relative;
+  font-weight: bold;
+}
+ul.nav{
+  display: flex;
+}
+
+div.dropdown{
+  margin-top: auto;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-bottom: auto;
+  &:hover {
+    background-color: blanchedalmond;
+  }
+}
+
+div.dropdown:hover > .dropdown-menu{
+  display: block;
+}
+
+a.dropdown-toggle{
+  text-decoration: none;
 }
 
 /* フッター */
@@ -256,11 +280,28 @@ span.user{
 }
 
 div.service_name{
-  padding-top: 10px;
+  padding-top: 50px;
+  border-bottom: 2px solid $gray-lighter;
 }
 
 div.service_price{
-  padding-top: 25px;
+  padding-top: 50px;
+  border-bottom: 2px solid $gray-lighter;
+}
+
+div.service_picture{
+  padding-top: 50px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid $gray-lighter;
+}
+
+div.service_content{
+  padding-top: 50px;
+  border-bottom: 2px solid $gray-lighter;
+}
+
+div.picture_section{
+  padding-top: 5px;
 }
 
 div.log-picture{
