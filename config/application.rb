@@ -18,5 +18,7 @@ module WhatApp
     config.i18n.default_locale = :ja
     config.action_view.embed_authenticity_token_in_remote_forms = true
     config.time_zone = 'Tokyo'
+    config.middleware.insert_after(ActiveRecord::Migration::CheckPending, ActionDispatch::Cookies)
+    config.middleware.insert_after(ActionDispatch::Cookies, ActionDispatch::Session::CookieStore)
   end
 end
