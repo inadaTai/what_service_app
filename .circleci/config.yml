@@ -1,17 +1,17 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/what_app
     docker:
       - image: circleci/ruby:2.6.3-node-browsers
         environment:
-          RAILS_ENV: test
-          MYSQL_HOST: 127.0.0.1
+        RAILS_ENV: test
+        MYSQL_HOST: 127.0.0.1
       - image: circleci/mysql:8.0
+        command: mysqld --default-authentication-plugin=mysql_native_password
         environment:
           MYSQL_USERNAME: root
           MYSQL_PASSWORD: password
-        command: mysqld --default-authentication-plugin=mysql_native_password
+    working_directory: ~/what_app
     steps:
       - checkout
       - restore_cache:
