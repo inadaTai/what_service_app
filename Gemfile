@@ -20,6 +20,7 @@ gem 'mini_magick', '4.10.1'
 gem 'omniauth', '1.9.1'
 gem 'omniauth-facebook', '6.0.0'
 gem 'omniauth-twitter'
+gem 'mysql2', '>= 0.4.4'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 # Reduces boot times through caching; required in config/boot.rb
@@ -38,7 +39,7 @@ group :development, :test do
   gem 'sqlite3', '~> 1.4'
   gem 'factory_bot_rails'
   gem 'capybara', '>= 2.15'
-  gem 'webdrivers'
+  gem 'database_cleaner'
 end
 
 group :development do

@@ -17,10 +17,10 @@
   <span class="user"><%= link_to "投稿者：#{micropost.user.name}", micropost.user %></span><br>
   <div class="post-title">
     <span class="name"><%= link_to "記事名：#{micropost.name}", micropost_path(micropost.id) %></span>
-  </div>
-  <span class="timestamp">
+    <span class="timestamp">
     投稿日 <%= "#{time_ago_in_words(micropost.created_at)}前" %> 
-  </span>
+    </span>
+  </div>
 </li>
 
 

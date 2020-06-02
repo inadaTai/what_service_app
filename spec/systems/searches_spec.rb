@@ -60,7 +60,7 @@ RSpec.describe "Searches", type: :system do
       click_on '検索', match: :first
       fill_in 'search', with: ' '
       click_button '検索'
-      expect(page.body).to have_content "''と一致する記事はありません。"
+      expect(page.body).to have_content "' 'と一致する記事はありません。"
       expect(page.body).not_to have_content "記事名：トレーニングジム"
       expect(page.body).not_to have_content "記事名：アマゾンプライム"
     end

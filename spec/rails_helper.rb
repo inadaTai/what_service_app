@@ -32,6 +32,17 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -64,9 +75,13 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
   config.include ApplicationHelpers
   config.include FactoryBot::Syntax::Methods
-  config.before(:each) do |example|
-    if example.metadata[:type] == :system
-      driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1400]
-    end
+  config.before(:each, type: :system) do
+    driven_by :selenium, using: :headless_chrome, options: {
+      browser: :remote,
+      url: ENV.fetch("SELENIUM_DRIVER_URL"),
+      desired_capabilities: :chrome
+    }
+    Capybara.server_host = 'web'
+    Capybara.app_host='http://web'
   end
 end

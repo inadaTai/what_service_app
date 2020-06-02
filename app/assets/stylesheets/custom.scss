@@ -56,6 +56,18 @@ ul.nav{
   display: flex;
 }
 
+@media (max-width: 780px) {
+  nav.nav_header{
+    display: flex;
+  }
+}
+
+@media (max-width: 530px) {
+  b.caret{
+    display: none;
+  }
+}
+
 div.dropdown{
   margin-top: auto;
   margin-left: 30px;
@@ -134,6 +146,9 @@ div.policy{
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
   }
+}
+li.users_search{
+  padding: 0px 13px 0px 13px;
 }
 
 ul.dropdown{
@@ -216,6 +231,10 @@ div.relation_article{
   }
 }
 
+h10.homeuser_name{
+  font-weight: bold;
+}
+
 .user_avatars {
   overflow: auto;
   margin-top: 10px;
@@ -273,6 +292,10 @@ span.picture {
 }
 
 div.post-title{
+
+}
+
+span.name{
   font-weight: bold;
   font-size: large;
 }
@@ -388,4 +411,5 @@ i.notification-circle{
   color: red;
   position: relative;
   top: -10px;
+  font-size: 5px;
 }
