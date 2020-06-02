@@ -38,6 +38,10 @@ development:
 
 test:
   <<: *default
+  username: 'root'
+  password: 'password'
+  port: 3306
+  host: '127.0.0.1'
   database: what_app_test
 
 production:
