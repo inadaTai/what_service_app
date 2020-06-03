@@ -52,14 +52,16 @@ RSpec.describe "Notifications", type: :system do
       expect(page.body).to have_content 'yamamotoがあなたの投稿にいいね！しました'
     end
 
-    it "自分の投稿へコメントを行い有効な通知が通知欄に来ている" do
+    it "自分の投稿へコメントを行い有効な通知が通知欄に来ている", js: true do
       valid_comment
       visit notifications_path
       expect(page.body).to have_content 'testがあなたの投稿にコメントしました'
     end
 
     it "未読通知はメニュー欄のところに件数つきで表示されいる" do
-      valid_comment
+      login_system(other_user)
+      valid_follow
+      login_system(user)
       visit root_path
       expect(page.body).to have_content '未読通知を見にいく(1件)'
     end

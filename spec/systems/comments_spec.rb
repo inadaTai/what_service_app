@@ -52,19 +52,19 @@ RSpec.describe "Comments", type: :system do
       expect(page).to have_selector '.alert-danger'
     end
 
-    it "140文字の有効なコメント投稿が出来る" do
+    it "140文字の有効なコメント投稿が出来る", js: true do
       submit_valid_micropost
       submit_valid_comment
     end
 
-    it "コメント投稿者は自分の投稿を削除できコメントのカウントも減る" do
+    it "コメント投稿者は自分の投稿を削除できコメントのカウントも減る", js: true do
       submit_valid_micropost
       submit_valid_comment
       click_on 'コメント削除'
       expect { visit current_path }.to change(user.comments, :count).by(-1)
     end
 
-    it "有効なコメント投稿を行うとコメントのカウントも増える" do
+    it "有効なコメント投稿を行うとコメントのカウントも増える", js: true do
       submit_valid_micropost
       expect { submit_valid_comment }.to change(user.comments, :count).by(1)
     end

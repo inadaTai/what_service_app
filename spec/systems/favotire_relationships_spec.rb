@@ -23,6 +23,7 @@ RSpec.describe "FavoriteRelationships", type: :system do
 
   # いいねボタンは[1]という名前で扱っております(カウントが減る場合のテスト)
   def submit_valid_unlikes
+    visit micropost_path(1)
     click_button '1'
     visit current_path
   end

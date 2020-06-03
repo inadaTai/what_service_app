@@ -31,7 +31,7 @@ RSpec.describe "Microposts", type: :system do
       expect(page).to have_selector '.alert-success'
     end
 
-    it "有効な投稿してその後投稿物を削除し成功のメッセージまで出る" do
+    it "有効な投稿してその後投稿物を削除し成功のメッセージまで出る", js: true do
       submit_valid_micropost
       expect(current_path).to eq root_path
       expect(page).to have_selector '.alert-success'

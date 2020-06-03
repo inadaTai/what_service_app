@@ -46,7 +46,7 @@ RSpec.describe "ログインに関するテスト", type: :system do
       expect(current_path).to eq root_path
     end
 
-    it "管理者アカウントのみ他人のアカウント削除が可能である" do
+    it "管理者アカウントのみ他人のアカウント削除が可能である", js: true do
       login_system(other_user)
       login_system(user)
       visit users_path
@@ -57,7 +57,7 @@ RSpec.describe "ログインに関するテスト", type: :system do
       expect(current_path).to eq root_path
     end
     # spaceを入れてしまうと確認メッセージでエラーが出るのでインデント崩しています
-    it "有効なログイン後に退会ができる" do
+    it "有効なログイン後に退会ができる", js: true do
       login_system(user)
       expect(current_path).to eq user_path(1)
       expect(page).to have_selector '.alert-success'
