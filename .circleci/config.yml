@@ -13,7 +13,7 @@ jobs:
         environment:
           MYSQL_ROOT_PASSWORD: 'password'
           MYSQL_DATABASE: what_app_test
-      - image: selenium/standalone-chrome-debug
+      - image: selenium/standalone-chrome:latest
 
     working_directory: ~/what_app
 
@@ -50,10 +50,10 @@ jobs:
       - run: bundle exec rake db:schema:load
       - run: bundle exec bin/webpack
       - run:
-          name: execute rspec
-          command: bundle exec rspec
-      - run:
           name: run rubocop
           command: bundle exec rubocop
+      - run:
+          name: execute rspec
+          command: bundle exec rspec
       - store_test_results:
           path: /tmp/test-results

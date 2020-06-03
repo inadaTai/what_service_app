@@ -69,7 +69,7 @@ RSpec.describe "Searches", type: :system do
       login_system(other_user)
       visit users_path
       fill_in 'search', with: 'yamamoto', match: :first
-      click_button '検索'
+      click_button 'ユーザー検索'
       expect(page.body).not_to have_content "ユーザー名：test"
       expect(page.body).to have_content "ユーザー名：yamamoto"
     end
