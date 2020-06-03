@@ -13,7 +13,7 @@ jobs:
         environment:
           MYSQL_ROOT_PASSWORD: 'password'
           MYSQL_DATABASE: what_app_test
-      - image: selenium/standalone-chrome-debug
+      - image: circleci/selenium/standalone-chrome-debug
 
     working_directory: ~/what_app
 
