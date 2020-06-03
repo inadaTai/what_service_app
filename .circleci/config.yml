@@ -58,6 +58,7 @@ jobs:
       - run:
           name: request spec
           command: bundle exec rspec spec/requests
+      - run: bundle exec rails db:environment:set RAILS_ENV=test
       - run:
           name: system comment
           command: bundle exec rspec spec/systems/comments_spec.rb
@@ -65,27 +66,35 @@ jobs:
       - run:
           name: system like
           command: bundle exec rspec spec/systems/favorite_relationships_spec.rb
+      - run: bundle exec rails db:environment:set RAILS_ENV=test
       - run:
           name: system micropost
           command: bundle exec rspec spec/systems/microposts_spec.rb
+      - run: bundle exec rails db:environment:set RAILS_ENV=test
       - run:
           name: system notification
           command: bundle exec rspec spec/systems/notifications_spec.rb
+      - run: bundle exec rails db:environment:set RAILS_ENV=test
       - run:
           name: system password_edits
           command: bundle exec rspec spec/systems/password_edits_spec.rb
+      - run: bundle exec rails db:environment:set RAILS_ENV=test
       - run:
           name: system follow
           command: bundle exec rspec spec/systems/relationship_spec.rb
+      - run: bundle exec rails db:environment:set RAILS_ENV=test
       - run:
           name: system search
           command: bundle exec rspec spec/systems/searches_spec.rb
+      - run: bundle exec rails db:environment:set RAILS_ENV=test
       - run:
           name: system login
           command: bundle exec rspec spec/systems/users_login_spec.rb
+      - run: bundle exec rails db:environment:set RAILS_ENV=test
       - run:
           name: system signup
           command: bundle exec rspec spec/systems/users_signup_spec.rb
+      - run: bundle exec rails db:environment:set RAILS_ENV=test
       - run:
           name: run rubocop
           command: bundle exec rubocop
