@@ -38,10 +38,11 @@ RSpec.describe "フォローに関するテスト", type: :system do
       expect { valid_unfollow }.to change(user.followers, :count).by(-1)
     end
 
-    it "ユーザーが他ユーザーをフォロー解除ができる", js: true do
+    it "ユーザーが他ユーザーをフォロー解除ができる" do
       login_system(other_user)
       valid_follow
       click_on 'フォロー解除'
+      visit current_path
       expect(page).to have_button 'フォロー'
     end
 

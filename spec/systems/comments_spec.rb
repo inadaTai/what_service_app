@@ -35,37 +35,29 @@ RSpec.describe "Comments", type: :system do
   context "ログイン済み時の表示" do
     before do
       login_system(user)
+      submit_valid_micropost
     end
 
     it "空欄で無効なコメントを行いエラーがメッセージが出る" do
-      submit_valid_micropost
       click_on 'フィットネスクラブ'
       click_on 'コメント投稿'
       expect(page).to have_selector '.alert-danger'
     end
 
     it "141文字以上の無効なコメントを行いエラーメッセージが出る" do
-      submit_valid_micropost
       click_on 'フィットネスクラブ'
       fill_in "comment_body", with: 'a' * 141
       click_on 'コメント投稿'
       expect(page).to have_selector '.alert-danger'
     end
 
-    it "140文字の有効なコメント投稿が出来る", js: true do
-      submit_valid_micropost
-      submit_valid_comment
-    end
-
-    it "コメント投稿者は自分の投稿を削除できコメントのカウントも減る", js: true do
-      submit_valid_micropost
+    it "コメント投稿者は自分の投稿を削除できコメントのカウントも減る" do
       submit_valid_comment
       click_on 'コメント削除'
       expect { visit current_path }.to change(user.comments, :count).by(-1)
     end
 
-    it "有効なコメント投稿を行うとコメントのカウントも増える", js: true do
-      submit_valid_micropost
+    it "有効なコメント投稿を行うとコメントのカウントも増える" do
       expect { submit_valid_comment }.to change(user.comments, :count).by(1)
     end
   end
