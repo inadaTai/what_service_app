@@ -62,6 +62,20 @@ ul.nav{
   }
 }
 
+@media (max-width: 500px) {
+  nav.nav_header{
+    display: flex;
+    font-size: 11px;
+  }
+  .navbar-nav{
+    margin: 0px -20px;
+  }
+  .dropdown-menu > li > a{
+    font-size: 11px;
+    font-weight: bold;
+  }
+}
+
 @media (max-width: 530px) {
   b.caret{
     display: none;
@@ -162,7 +176,7 @@ ul.dropdown:hover > .dropdown-menu{
 }
 div.drop_user_status{
   padding: 20px 40px;
-  }
+}
 /* sidebar */
 
 aside {

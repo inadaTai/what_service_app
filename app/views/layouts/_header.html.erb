@@ -15,7 +15,7 @@
                 <%= text_field_tag :search, params[:search], placeholder: "全体記事を検索" %>
                 <%= submit_tag '検索', :name => nil %>
               <% end %></p>
-              <%= link_to "ユーザー検索の場合はこちらをクリック", users_path, class: "btn btn-info" %>
+              <%= link_to "ユーザー検索の場合はこちらをクリック", users_path, class: "btn btn-info user_searchbutton" %>
             </li>
         </div>
         <div class="dropdown">
@@ -23,7 +23,7 @@
       メニュー
       <b class="caret"></b>
       </a>
-      <ul class="dropdown-menu">
+      <ul class="dropdown-menu dropdown-menu-right">
         <li><%= link_to "ホーム", root_path %></li>
         <li class="divider"></li>
         <li><%= link_to "アバウト", about_path %></li>
@@ -48,7 +48,7 @@
             <% end %>  
             <b class="caret"></b>
             </a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu dropdown-menu-right">
               <li><%= link_to "プロフィール", current_user %></li>
               <li><%= link_to "設定", edit_user_path(current_user) %></li>
               <li class="divider"></li>
