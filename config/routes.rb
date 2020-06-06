@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   post '/signup',  to:'users#create'
   get '/login',    to:'sessions#new'
   post '/login',   to:'sessions#create'
-  delete '/logout', to:'sessions#destroy'
+  post '/logout', to:'sessions#destroy'
   get 'password_edits/edit',to:'password_edits#edit'
   get 'auth/:provider/callback', to: 'sessions#create'
   resources :users do

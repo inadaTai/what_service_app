@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
-gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
+gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
@@ -21,6 +21,9 @@ gem 'omniauth', '1.9.1'
 gem 'omniauth-facebook', '6.0.0'
 gem 'omniauth-twitter'
 gem 'mysql2', '>= 0.4.4'
+gem 'coffee-rails'
+gem 'uglifier'
+gem 'trix'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 # Reduces boot times through caching; required in config/boot.rb

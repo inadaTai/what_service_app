@@ -3,6 +3,7 @@ class Micropost < ApplicationRecord
   belongs_to :user
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 2500 }
+  has_rich_text :content
   validates :name, presence: true, length: { maximum: 30 }
   validates :price, presence: true, length: { maximum: 30 }
   has_one_attached :picture, dependent: :destroy

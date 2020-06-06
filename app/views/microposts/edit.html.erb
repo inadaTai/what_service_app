@@ -12,7 +12,7 @@
 </div>
 <div class="field">
   <%= f.label :content, "記事の内容" %>
-  <%= f.text_area :content, size: "20x30", class: 'form-control', placeholder: "(※2500文字まで)記事の内容" %>
+  <%= f.rich_text_area :content, placeholder: "(※2500文字まで)記事の内容" %>
 </div><br>
 <p>現在掲載している画像</p>
 <% if @micropost.picture.attached? %>

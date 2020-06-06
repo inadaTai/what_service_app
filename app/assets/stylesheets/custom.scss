@@ -1,3 +1,4 @@
+@import "trix";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -83,6 +84,10 @@ ul.nav{
   .dropdown-menu > li > a{
     font-size: 11px;
     font-weight: bold;
+  }
+  li.no_session{
+    margin-left: 8px;
+    margin-top: 3px;
   }
 }
 
@@ -317,10 +322,6 @@ span.picture {
   }
 }
 
-div.post-title{
-
-}
-
 span.name{
   font-weight: bold;
   font-size: large;
@@ -438,4 +439,30 @@ i.notification-circle{
   position: relative;
   top: -10px;
   font-size: 5px;
+}
+/* 記事投稿ページ */
+div.article_name{
+  width:600px;
+  padding-bottom: 15px;
+}
+
+div.article_price{
+  width:600px;
+  padding-bottom: 15px;
+}
+
+div.article_content{
+  padding-bottom: 20px;
+}
+
+div.article_picture{
+  padding: 30px 0px;
+}
+
+span.trix-button-group--file-tools{
+  display: none;
+}
+
+figcaption.attachment__caption{
+  display: none;
 }

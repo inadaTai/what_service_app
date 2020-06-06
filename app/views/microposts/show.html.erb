@@ -17,7 +17,7 @@
     <div class="service_picture" id="service_picture3">③画像</div><div class="picture_section">画像が選択されていません。</div>
     <% end %>
     <span class="micropost_section">
-    <div class="service_content" id="service_content4">④サービスの内容</div><br><%= "#{@micropost.content}" %><br>
+    <div class="service_content" id="service_content4">④サービスの内容</div><br><%= sanitize "#{@micropost.content}" %><br>
     </span>
     <% if current_user?(@micropost.user) %>
       <%= link_to "削除する", @micropost, method: :delete,

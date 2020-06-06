@@ -52,13 +52,14 @@
               <li><%= link_to "プロフィール", current_user %></li>
               <li><%= link_to "設定", edit_user_path(current_user) %></li>
               <li class="divider"></li>
-              <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+              <li><%= link_to "ログアウト", logout_path, method: :post %></li>
             </ul>
           </div>
         <% else %>
-        <li><%= link_to "ホーム", root_path %></li>
-        <li><%= link_to "アバウト", about_path %></li>
-        <li><%= link_to "ログイン", login_path %></li></div>
+        <li class="no_session"><%= link_to "ホーム", root_path %></li>
+        <li class="no_session"><%= link_to "アバウト", about_path %></li>
+        <li class="no_session"><%= link_to "ログイン", login_path %></li>
+      </div>
       <% end %>
       </ul>
     </nav>
