@@ -12,6 +12,11 @@
       <%= f.label :content, "記事の内容" %>
       <%= f.rich_text_area :content, placeholder: "(※2500文字まで)記事の内容" %>
     </div>
+    <div class="field">
+      <%= f.label :content %>
+      <%= f.hidden_field :content, id: :sample_content %>
+      <trix-editor placeholder= "(※2500文字まで)記事の内容" input="sample_conetent"></trix-editor>
+    </div>  
     <div class="field article_picture">
       <%= f.label :picture, "記事の画像" %>
       <%= f.file_field :picture %>
