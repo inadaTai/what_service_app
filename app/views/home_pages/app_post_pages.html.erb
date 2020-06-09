@@ -1,0 +1,34 @@
+<% provide(:page_title, "APP版記事投稿") %>
+<h1>記事投稿ページ</h1>
+    <p>あなたの体験したことあるサービスについてみんなに話して見ましょう！</p>
+    <p>※注意点※</p>
+    <ul>
+      <li>こちらアプリ版の投稿ページとなります。</li>
+      <li>虚偽の情報を記載しないでください。</li>
+      <li>受けたことないサービスを記事としてを書く行為はお控えください</li>
+      <li>投稿前に写真をご確認ください。(写真の加工状態も含め)</li>
+    </ul>
+    <section class="micropost_form">
+      <%= render 'share/app_post_form' %>
+    </section>
+    <script>
+    
+    mWebView.setWebChromeClient(new WebChromeClient() {
+
+        @Override
+        public void onPermissionRequest(final PermissionRequest request) {
+            Log.d(TAG, "onPermissionRequest");
+            getActivity().runOnUiThread(new Runnable() {
+                @TargetApi(Build.VERSION_CODES.L)
+                @Override
+                public void run() {
+                    if(request.getOrigin().toString().equals("https://what-service-app.herokuapp.com/app_post_pages")) {
+                        request.grant(request.getResources());
+                    } else {
+                        request.deny();
+                    }
+                }
+            });
+        }
+    });
+      </script>

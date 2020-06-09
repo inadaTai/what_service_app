@@ -52,7 +52,9 @@
               <li><%= link_to "プロフィール", current_user %></li>
               <li><%= link_to "設定", edit_user_path(current_user) %></li>
               <li class="divider"></li>
-              <li><%= link_to "ログアウト", logout_path, method: :post %></li>
+              <li class="header_logout"><%= form_with(scope: :session, url: logout_path, local: true) do |f| %>
+                <%= f.submit "ログアウト", style: "color: #333;" , class: "btn btn-link" %>
+              <% end %></li>
             </ul>
           </div>
         <% else %>

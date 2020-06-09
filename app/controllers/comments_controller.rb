@@ -9,7 +9,10 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     if @comment.save
       @comment.create_notification_by(current_user)
-      render :index
+      respond_to do |format|
+        format.html { redirect_back_or @micropost }
+        format.js { render :index }
+      end
     else
       flash[:danger] = "空欄または140文字以上のコメントは出来ません"
       redirect_to "/microposts/#{@micropost.id}"
@@ -17,10 +20,14 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @micropost = Micropost.find(params[:micropost_id])
     @comment = Comment.find_by(id: params[:id])
     @comment.destroy
     @comment.delete_notification_by(current_user)
-    render :index
+    respond_to do |format|
+      format.html { redirect_back_or @micropost }
+      format.js { render :index }
+    end
   end
 
   private

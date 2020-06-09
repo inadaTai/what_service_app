@@ -13,10 +13,6 @@
       <p>ステータスメニュー</p>
     </div>
     <p><%= link_to "フォローしている人の記事を見にいく", timeline_path %></p>
-    <p><%= link_to "ログアウト", logout_path, method: :post, class: "btn btn-link user_searchbutton" %></p>
-    <p><%= form_with(scope: :session, url: logout_path, local: true) do |f| %>
-      <%= f.submit "ログアウト", class: "btn btn-warning" %>
-    <% end %></p>
     <% if unchecked_notifications.any? %>
       <p><%= link_to "未読通知を見にいく(#{unchecked_notifications.count}件)", notifications_path %></p>
     <% end %>

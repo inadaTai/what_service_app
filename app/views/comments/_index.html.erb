@@ -6,17 +6,17 @@
   <div class="comment-box">
     <div class="comment-text">
       <% if comment.user.picture.present? %>
-      <%= image_tag comment.user.resize_home_icon %>
+        <%= image_tag comment.user.resize_home_icon %>
       <% else %>
-      <img src="/default2.jpg" width="65px" height="65px">
+        <img src="/default2.jpg" width="65px" height="65px">
       <% end %>
       <%= link_to "コメントユーザー：#{comment.user.name}", comment.user %>
       <div class="comment-entry">
         <p><%= "コメント内容：#{comment.body}" %></p>
         <% if comment.user == current_user %>
-        <%= link_to micropost_comment_path(comment.micropost_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
-        コメント削除
-        <% end %>
+          <%= form_with(scope: :comment, url: micropost_comment_path(comment.micropost_id, comment.id), method: :delete) do |f| %>
+            <%= f.submit "コメント削除", class: "btn-sm btn-link" %>
+          <% end %>
         <% end %>
       </div>
       <span class="comment-date pull-right">
@@ -36,17 +36,17 @@
     <div class="comment-box">
       <div class="comment-text">
         <% if comment.user.picture.present? %>
-        <%= image_tag comment.user.resize_home_icon %>
+          <%= image_tag comment.user.resize_home_icon %>
         <% else %>
-        <img src="/default2.jpg" width="65px" height="65px">
+          <img src="/default2.jpg" width="65px" height="65px">
         <% end %>
         <%= link_to "コメントユーザー：#{comment.user.name}", comment.user %>
         <div class="comment-entry">
           <%= "コメント内容：#{comment.body}" %>
           <% if comment.user == current_user %>
-          <%= link_to micropost_comment_path(comment.micropost_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
-          <p>コメント削除</p>
-          <% end %>
+            <%= form_with(scope: :comment, url: micropost_comment_path(comment.micropost_id, comment.id), method: :delete) do |f| %>
+              <%= f.submit "コメント削除", class: "btn-sm btn-link" %>
+            <% end %>
           <% end %>
         </div>
         <span class="comment-date pull-right">

@@ -10,10 +10,7 @@
     </div>
     <div class="field article_content">
       <%= f.label :content, "記事の内容" %>
-      <%= f.rich_text_area :content, placeholder: "(※2500文字まで)記事の内容" %>
-    </div>
-    <div class="app_button">
-    <%= link_to 'アプリ版専用ボタン' , app_post_pages_path , class: "btn-sm btn-info" %>
+      <%= f.text_area :content, class: 'form-control', placeholder: "(※2500文字まで)記事の内容" %>
     </div>
     <div class="field article_picture">
       <%= f.label :picture, "記事の画像" %>
