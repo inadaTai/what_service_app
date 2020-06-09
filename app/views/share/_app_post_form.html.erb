@@ -14,7 +14,7 @@
     </div>
     <div class="field article_picture">
       <%= f.label :picture, "記事の画像" %>
-      <%= f.file_field :picture %>
+      <%= f.file_field :picture, accept: 'image/*' %>
     </div> 
     <%= f.submit "記事を投稿する", class: "btn btn-lg btn-primary" %>    
 <% end %>

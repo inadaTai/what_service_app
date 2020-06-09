@@ -11,24 +11,3 @@
     <section class="micropost_form">
       <%= render 'share/app_post_form' %>
     </section>
-    <script>
-    
-    mWebView.setWebChromeClient(new WebChromeClient() {
-
-        @Override
-        public void onPermissionRequest(final PermissionRequest request) {
-            Log.d(TAG, "onPermissionRequest");
-            getActivity().runOnUiThread(new Runnable() {
-                @TargetApi(Build.VERSION_CODES.L)
-                @Override
-                public void run() {
-                    if(request.getOrigin().toString().equals("https://what-service-app.herokuapp.com/app_post_pages")) {
-                        request.grant(request.getResources());
-                    } else {
-                        request.deny();
-                    }
-                }
-            });
-        }
-    });
-      </script>
