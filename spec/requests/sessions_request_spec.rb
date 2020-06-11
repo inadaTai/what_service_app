@@ -34,7 +34,7 @@ RSpec.describe "Sessions", type: :request do
       get login_path
       post_valid_information(remember_me: 0)
       expect(is_logged_in?).to be_truthy
-      delete logout_path
+      post logout_path
       expect(is_logged_in?).to be_falsey
     end
   end
@@ -46,11 +46,11 @@ RSpec.describe "Sessions", type: :request do
       expect(is_logged_in?).to be_truthy
       follow_redirect!
       expect(request.fullpath).to eq '/users/1'
-      delete logout_path
+      post logout_path
       expect(is_logged_in?).to be_falsey
       follow_redirect!
       expect(request.fullpath).to eq '/'
-      delete logout_path
+      post logout_path
       expect(is_logged_in?).to be_falsey
       follow_redirect!
       expect(request.fullpath).to eq '/'
@@ -68,7 +68,7 @@ RSpec.describe "Sessions", type: :request do
       post_valid_information(remember_me: 1)
       expect(is_logged_in?).to be_truthy
       expect(cookies[:remember_token]).not_to be_empty
-      delete logout_path
+      post logout_path
       expect(is_logged_in?).to be_falsey
       expect(cookies[:remember_token]).to be_empty
     end

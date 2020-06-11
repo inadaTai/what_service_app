@@ -20,16 +20,16 @@ RSpec.describe "PasswordEdits", type: :system do
       expect(page).to have_selector '.alert-success'
     end
 
-    it "フェイスブックアカウントユーザーは編集不可" do
+    it "他プラットフォームよりログインアカウントユーザーは編集不可" do
       login_system(face_user)
       visit "/password_edits/edit"
-      expect(page).to have_content "かんたんログインユーザーまたはFacebookアカウントのユーザーはご利用できません"
+      expect(page).to have_content "かんたんログインユーザーまたは他プラットフォームのユーザーはご利用できません"
     end
 
     it "かんたんログインユーザーは編集不可" do
       login_system(test_user)
       visit "/password_edits/edit"
-      expect(page).to have_content "かんたんログインユーザーまたはFacebookアカウントのユーザーはご利用できません"
+      expect(page).to have_content "かんたんログインユーザーまたは他プラットフォームのユーザーはご利用できません"
     end
   end
 end

@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   get '/contact',  to:'home_pages#contact'
   get '/policy',   to:'home_pages#policy'
   get '/post_pages', to:'home_pages#post_pages'
-  get '/app_post_pages', to:'home_pages#app_post_pages'
   get '/likes_pages', to:'home_pages#likes_pages'
   get '/signup',   to:'users#new'
   post '/signup',  to:'users#create'

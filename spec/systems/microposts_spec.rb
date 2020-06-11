@@ -6,7 +6,7 @@ RSpec.describe "Microposts", type: :system do
   def submit_valid_micropost
     fill_in '記事の題名', with: 'フィットネスクラブ', match: :first
     fill_in 'サービスの金額を入力してください', with: '月額500円', match: :first
-    fill_in '記事の内容', with: '良いサービス', match: :first
+    find('trix-editor').click.set('良いサービス')
     attach_file 'micropost[picture]', "#{Rails.root}/db/images_seeds/1.png", match: :first
     click_button '投稿する'
   end
@@ -14,7 +14,7 @@ RSpec.describe "Microposts", type: :system do
   def submit_invalid_micropost
     fill_in '記事の題名', with: 'サービス題名', match: :first
     fill_in 'サービスの金額を入力してください', with: '月額500円', match: :first
-    fill_in '記事の内容', with: 'a' * 2501, match: :first
+    find('trix-editor').click.set('a' * 2501)
     attach_file 'micropost[picture]', "#{Rails.root}/db/images_seeds/1.png", match: :first
     click_button '投稿する'
   end
@@ -77,7 +77,7 @@ RSpec.describe "Microposts", type: :system do
     it "値段項目のところで31文字を超える投稿は無効" do
       fill_in '記事の題名', with: 'サービス題名', match: :first
       fill_in 'サービスの金額を入力してください', with: 'a' * 31, match: :first
-      fill_in '記事の内容', with: '良いサービス', match: :first
+      find('trix-editor').click.set('良いサービス')
       attach_file 'micropost[picture]', "#{Rails.root}/db/images_seeds/1.png", match: :first
       click_button '投稿する'
       expect(current_path).to eq '/microposts'
@@ -87,7 +87,7 @@ RSpec.describe "Microposts", type: :system do
     it "記事の題名を31文字を超える投稿は無効" do
       fill_in '記事の題名', with: 'a' * 31, match: :first
       fill_in 'サービスの金額を入力してください', with: '月額500円', match: :first
-      fill_in '記事の内容', with: '良いサービス', match: :first
+      find('trix-editor').click.set('良いサービス')
       attach_file 'micropost[picture]', "#{Rails.root}/db/images_seeds/1.png", match: :first
       click_button '投稿する'
       expect(current_path).to eq '/microposts'
@@ -97,7 +97,7 @@ RSpec.describe "Microposts", type: :system do
     it "記事に画像が添付されていない投稿は無効" do
       fill_in '記事の題名', with: 'a' * 31, match: :first
       fill_in 'サービスの金額を入力してください', with: '月額500円', match: :first
-      fill_in '記事の内容', with: '良いサービス', match: :first
+      find('trix-editor').click.set('良いサービス')
       click_button '投稿する'
       expect(current_path).to eq '/microposts'
       expect(page).to have_selector '.alert-danger'

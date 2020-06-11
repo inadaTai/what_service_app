@@ -23,10 +23,6 @@ class HomePagesController < ApplicationController
     @micropost = current_user.microposts.build if logged_in?
   end
 
-  def app_post_pages
-    @micropost = current_user.microposts.build if logged_in?
-  end
-
   def help
   end
 

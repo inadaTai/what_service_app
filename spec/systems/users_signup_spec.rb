@@ -27,7 +27,7 @@ RSpec.describe "ユーザの新規登録に関するテスト", type: :system do
     visit signup_path
     submit_valid
     click_on 'アカウント登録'
-    expect(current_path).to eq user_path(4)
+    expect(current_path).to eq user_path(1)
     expect(page).not_to have_selector '#error_explanation'
   end
 end

@@ -334,12 +334,7 @@ span.name{
 }
 
 .micropost_content{
-  font-weight: bold;
   font-size: 1.3em;
-}
-
-.micropost_section{
-  white-space: pre-line;
 }
 
 span.user{
@@ -463,13 +458,6 @@ div.article_content{
 
 div.article_picture{
   padding: 30px 0px;
-}
-
-@media (min-width: 500px) {
-  div.app_button{
-    display: none;
-    padding: 15px 0px;
-  }
 }
 
 span.trix-button-group--file-tools{

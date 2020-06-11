@@ -1,20 +1,20 @@
 <% provide(:page_title, "パスワード編集") %>
 <h1>パスワード編集用ページ</h1>
 <% if !@user.sample? && !@user.uid? %>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-  <%= form_with(model: @user, url: password_edits_edit_path(current_user), html: {method: "patch"}, local: true) do |f| %>
-    <%= render'share/error_messages',object: f.object %>
-    <%= f.label :current_password, "現在のパスワード" %>
-    <%= f.password_field :current_password, class: 'form-control' %>
-    <%= f.label :password, "新規パスワード" %>
-    <%= f.password_field :password, class: 'form-control' %>
-    <%= f.label :password_confirmation, "確認の為もう一度ご入力ください" %>
-    <%= f.password_field :password_confirmation, class: 'form-control' %><br>
-    <%= f.submit "再設定", class: "btn btn-primary" %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+    <%= form_with(model: @user, url: password_edits_edit_path(current_user), html: {method: "patch"}, local: true) do |f| %>
+      <%= render'share/error_messages',object: f.object %>
+      <%= f.label :current_password, "現在のパスワード" %>
+      <%= f.password_field :current_password, class: 'form-control' %>
+      <%= f.label :password, "新規パスワード" %>
+      <%= f.password_field :password, class: 'form-control' %>
+      <%= f.label :password_confirmation, "確認の為もう一度ご入力ください" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %><br>
+      <%= f.submit "再設定", class: "btn btn-primary" %>
   <% end %>
-  <% else %>
-  かんたんログインユーザーまたはFacebookアカウントのユーザーはご利用できません
+<% else %>
+  かんたんログインユーザーまたは他プラットフォームのユーザーはご利用できません
 <% end %>
   <div class="password_edit">
     このページからパスワード更新には現在利用中のパスワードが必要となります

@@ -9,7 +9,7 @@ RSpec.describe "FavoriteRelationships", type: :system do
     visit post_pages_path
     fill_in '記事の題名', with: 'フィットネスクラブ', match: :first
     fill_in 'サービスの金額を入力してください', with: '月額500円', match: :first
-    fill_in '記事の内容', with: '良いサービス', match: :first
+    find('trix-editor').click.set('良いサービス')
     attach_file 'micropost[picture]', "#{Rails.root}/db/images_seeds/1.png", match: :first
     click_button '投稿する'
   end
