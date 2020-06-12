@@ -6,7 +6,7 @@
       <%= render 'share/user_status' %>
     </section>
     <section class="status">
-      <%= render 'share/follow_status' %>
+      <%= render 'share/follow_status', user: @user %>
     </section>
     <p><%= link_to "記事を投稿する", post_pages_path, class: "btn btn-primary" %></p>
     <div class="relation_article">
@@ -17,7 +17,7 @@
   </aside>
   <div class="col-md-7 col-md-offset-1">
     <h3>タイムライン</h3>
-    <%= render 'share/feed' %>
+    <%= render 'share/feed', feed_items: @feed_items %>
   </div>
 </div>
 <% end %>

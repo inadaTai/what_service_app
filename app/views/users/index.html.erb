@@ -1,5 +1,5 @@
 <% provide(:page_title, 'ユーザー 一覧') %>
-<h1>ユーザー　一覧ページ</h1>
+<h1 class="users_top">ユーザー　一覧ページ</h1>
 <div>
   <%= form_with url: users_path, method: :get, local: true do |f| %>
     <%= f.label :search, "ユーザー検索" %>

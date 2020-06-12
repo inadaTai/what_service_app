@@ -1,5 +1,5 @@
 class FavoriteRelationshipsController < ApplicationController
-  before_action :logged_in_user
+  before_action :logged_in_user, only: [:create, :destroy]
 
   def create
     @user = current_user

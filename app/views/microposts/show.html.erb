@@ -12,10 +12,14 @@
   <div class="service_name" id="service_name1">①サービスの名前</div><%= "#{@micropost.name}" %>
   <div class="service_price" id="service_price2">②サービスの金額</div><%= "#{@micropost.price}" %>
     <% if @micropost.picture.attached? %>
-    <div class="service_picture" id="service_picture3">③画像</div><div class="picture_section"><%= image_tag @micropost.resize_picture %></div>
+      <div class="service_picture" id="service_picture3">③画像</div>
+      <!-- モーダルを開くボタン・リンク -->
+      <button type="button" class="btn btn-default mb-12 modalbutton" data-toggle="modal" data-target="#testModal-<%= @micropost.id %>">
+      <div class="picture_section"><%= image_tag @micropost.resize_picture %></div>
     <% else %>
-    <div class="service_picture" id="service_picture3">③画像</div><div class="picture_section">画像が選択されていません。</div>
+      <div class="service_picture" id="service_picture3">③画像</div><div class="picture_section">画像が選択されていません。</div>
     <% end %>
+    </button>
     <span class="micropost_section">
     <div class="service_content" id="service_content4">④サービスの内容</div><br><%= sanitize "#{@micropost.content}" %><br>
     </span>
@@ -33,7 +37,6 @@
       <% end %>
     <% end %>
     </span>
-</li>
   </span>
   <div class="row" id="service_comment5">
   <div class="comment_section">
@@ -64,3 +67,31 @@
   <p><%= link_to "※コメント" , { anchor: "service_comment5" } %></p>
 </div>
 </div>
+<!-- ボタン・リンククリック後に表示される画面の内容 -->
+<div class="modal" id="testModal-<%= @micropost.id %>"  role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog　col-md-6 col-md-offset-2">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">投稿画像</h4>
+      </div>
+      <div id="micropost-<%= "#{@micropost.id}" %>">
+        <% if @micropost.user.picture.present? %>
+          <%= image_tag @micropost.user.resize_edit_icon %>
+        <% else %>
+          <img src="/default2.jpg" width="65px" height="65px">
+        <% end %>
+        <span class="user">投稿主：<%= link_to "#{@micropost.user.name}", @micropost.user  %></span>
+        <span class="micropost_content">
+          <% if @micropost.picture.attached? %>
+            <div class="service_picture" id="service_picture3">③画像</div><div class="picture_section"><%= image_tag @micropost.modal_picture %></div>
+          <% else %>
+            <div class="service_picture" id="service_picture3">③画像</div><div class="picture_section">画像が選択されていません。</div>
+          <% end %>
+        </span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+        </div>
+      </div>
+    </div>

@@ -5,7 +5,7 @@
     <%= render 'share/user_status' %>
   </section>
     <section class="status">
-      <%= render 'share/follow_status' %>
+      <%= render 'share/follow_status', user: @user %>
     </section>
       <% if @users.any? %>
         <div class="user_avatars">
@@ -20,7 +20,6 @@
           <% end %>
         </div>
       <% end %>
-    </section>
   </aside>
   <div class="col-md-8">
     <h3><%= @title %></h3>

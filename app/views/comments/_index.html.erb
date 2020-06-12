@@ -2,7 +2,7 @@
 <p class="all_view_comment"><%= comments.count %>件のコメント</p>
 <% comments.first(10).each do |comment| %>
 <% unless comment.id.nil? %>
-<li class="comment-container">
+  <li class="comment-container">
   <div class="comment-box">
     <div class="comment-text">
       <% if comment.user.picture.present? %>
@@ -24,7 +24,7 @@
       </span>
     </div>
   </div>
-</li>
+  </li>
 <% end %>
 <% end %>
 <h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">全体のコメントを見る</h6>

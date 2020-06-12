@@ -1,4 +1,4 @@
-<%= form_with(model: [micropost, comment], url: micropost_comments_path(@micropost) ) do |f| %>
-  <%= f.text_area :body,  size: "70x4" %><br>
+<%= form_with(model: [micropost, comment], url: micropost_comments_path(micropost) ) do |f| %>
+  <%= f.text_area :body, size: "70x4" %><br>
   <%= f.submit "コメント投稿", class: "btn btn-primary" %>
 <% end %>

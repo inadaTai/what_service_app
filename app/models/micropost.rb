@@ -36,6 +36,10 @@ class Micropost < ApplicationRecord
     picture.variant(resize: '400x400').processed
   end
 
+  def modal_picture
+    picture.variant(resize: '590x590').processed
+  end
+
   def likes?(micropost)
     likes.include?(micropost)
   end

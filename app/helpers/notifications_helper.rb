@@ -11,9 +11,9 @@ module NotificationsHelper
       "#{visiter}があなたをフォローしました"
     when "like"
       "#{visiter}が#{your_post}にいいね！しました"
-    when "comment" then
-      Comment.find_by(id: notification.comment_id)&.body
-      "#{visiter}が#{your_post}にコメントしました"
+    when "comment"
+      "#{visiter}が#{your_post}にコメントしました<br>
+      コメント内容：#{Comment.find_by(id: notification.comment_id)&.body}"
     end
   end
 end

@@ -1,24 +1,24 @@
 <aside class="col-md-4">
 <section class="user_info">
   <p>
-    <% if @user.picture.present? %>
-      <%= image_tag @user.resize_edit_icon %>
+    <% if user.picture.present? %>
+      <%= image_tag user.resize_edit_icon %>
     <% else %>
       <img src="/default2.jpg" width="80px" height="80px">
     <% end %>
   </p>
-  ユーザー名:<%= "#{@user.name}" %>
+  ユーザー名:<%= "#{user.name}" %>
   </section>
   <section class="status">
-    <%= render 'share/follow_status' %>
+    <%= render 'share/follow_status', user: user %>
   </section>
-  <p><%= "記事の投稿数：#{@user.microposts.count}" %></p>
-  <% if current_user?(@user) %>
+  <p><%= "記事の投稿数：#{user.microposts.count}" %></p>
+  <% if current_user?(user) %>
     <%= link_to "プロフィール編集", edit_user_path %>
   <% end %>
   <span class="current_introduct">
-  <% if @user.introduct.present? %>
-    ■プロフィール■<br><%= "#{@user.introduct}" %>
+  <% if user.introduct.present? %>
+    ■プロフィール■<br><%= "#{user.introduct}" %>
   <% else %>
     ■プロフィール■<br>プロフィールが設定されていません
   <% end %>

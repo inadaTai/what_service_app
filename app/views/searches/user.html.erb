@@ -13,7 +13,7 @@
         <ul class="user-posts">
           <%= render @users %>
         </ul>
-        <%= will_paginate @users %>
+        <%= will_paginate @users, previous_label: '&lt 前へ', next_label: '次へ &gt' %>
       <% end %>
     </div>
   </div>

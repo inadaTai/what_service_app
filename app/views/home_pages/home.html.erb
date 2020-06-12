@@ -6,7 +6,7 @@
       <%= render 'share/user_status' %>
     </section>
     <section class="status">
-      <%= render 'share/follow_status' %>
+      <%= render 'share/follow_status', user: @user %>
     </section>
     <p><%= link_to "記事を投稿する", post_pages_path, class: "btn btn-primary" %></p>
     <div class="relation_article">
@@ -19,7 +19,7 @@
   </aside>
   <div class="col-md-6 col-md-offset-1">
     <h3>全体投稿記事一覧<%= "(#{Micropost.all.count})" %></h3>
-    <%= render 'share/feed' %>
+    <%= render 'share/feed', feed_items: @feed_items %>
   </div>
 </div>
 <% else %>
@@ -43,7 +43,7 @@
   </div>
 </div>
 <h1>最新の投稿記事</h1>
-<%= render 'share/anfeed' %>
+<%= render 'share/anfeed', feed_items: @feed_items %>
 <p>このサービスを通してあなたも利用中または利用していたサービスの情報を共有しませんか？</p>
 <p>これより先の全ての記事を見る場合は新規会員登録が必要となります。</p>
 <%= link_to "新規登録", signup_path, class: "btn btn-lg btn-success" %><br>

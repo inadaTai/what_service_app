@@ -184,6 +184,7 @@ div.policy{
     border-bottom: 1px solid $gray-lighter;
   }
 }
+
 li.users_search{
   padding: 0px 13px 0px 13px;
 }
@@ -197,8 +198,17 @@ ul.dropdown:hover > .dropdown-menu{
   padding: 20px 40px;
   float: left;
 }
+
 div.drop_user_status{
   padding: 20px 40px;
+}
+
+@media (max-width: 500px) {
+  h1.users_top{
+    letter-spacing: -2px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
 }
 /* sidebar */
 
@@ -307,7 +317,7 @@ h10.homeuser_name{
   .timestamp {
     color: $gray-light;
     display: block;
-    margin-left: 60px;
+    margin-left: 100px;
   }
   .post-icon {
     float: left;
@@ -358,6 +368,12 @@ div.service_picture{
   border-bottom: 2px solid $gray-lighter;
 }
 
+button.modalbutton{
+  display: contents;
+  width: 400px;
+  height: 400px;
+}
+
 div.service_content{
   padding-top: 50px;
   border-bottom: 2px solid $gray-lighter;
@@ -376,6 +392,16 @@ div.table_content{
   border: 3px solid #eaeaea;
   position: fixed;
   left: 75%;
+}
+
+div.modal-content{
+  padding: 20px;
+}
+
+@media (max-width: 650px) {
+  div.picture_section > img{
+    width:400px;
+  }
 }
 
 /* コメントのレイアウト */

@@ -1,6 +1,6 @@
 <% provide(:page_title, "#{@user.name}") %>
 <div class="row">
-  <%= render 'micropost_user' %>
+  <%= render 'micropost_user', user: @user %>
   <div class="col-md-8">
     <% if @user.microposts.any? %>
       <h3>投稿記事一覧 (<%= @user.microposts.count %>)</h3>

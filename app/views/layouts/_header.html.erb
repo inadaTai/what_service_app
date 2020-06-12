@@ -1,6 +1,6 @@
 <header class="navbar navbar-fixed-top bg-success">
   <div class="container">
-  <%= link_to "What Service App", root_path, id: "logo" %>  
+  <%= link_to "What Service App", root_path, id: "logo" %>
     <nav class="nav_header">
       <ul class="nav navbar-nav navbar-right fixed-top navbar-extend">
       <% if logged_in? %>
@@ -45,7 +45,7 @@
               <%= image_tag current_user.resize_icon %>
             <% else %>
               <img src="/default2.jpg" width="50px" height="50px">
-            <% end %>  
+            <% end %>
             <b class="caret"></b>
             </a>
             <ul class="dropdown-menu dropdown-menu-right">
@@ -53,16 +53,15 @@
               <li><%= link_to "設定", edit_user_path(current_user) %></li>
               <li class="divider"></li>
               <li class="header_logout"><%= form_with(scope: :session, url: logout_path, local: true) do |f| %>
-                <%= f.submit "ログアウト", style: "color: #333;" , class: "btn btn-link" %>
+                <a><%= f.submit "ログアウト", style: "color: #333;" , class: "btn btn-link" %></a>
               <% end %></li>
             </ul>
           </div>
         <% else %>
-        <li class="no_session"><%= link_to "ホーム", root_path %></li>
-        <li class="no_session"><%= link_to "アバウト", about_path %></li>
-        <li class="no_session"><%= link_to "ログイン", login_path %></li>
-      </div>
-      <% end %>
+          <li class="no_session"><%= link_to "ホーム", root_path %></li>
+          <li class="no_session"><%= link_to "アバウト", about_path %></li>
+          <li class="no_session"><%= link_to "ログイン", login_path %></li>
+        <% end %>
       </ul>
     </nav>
   </div>
