@@ -53,7 +53,7 @@
               <li><%= link_to "設定", edit_user_path(current_user) %></li>
               <li class="divider"></li>
               <li class="header_logout"><%= form_with(scope: :session, url: logout_path, local: true) do |f| %>
-                <a><%= f.submit "ログアウト", style: "color: #333;" , class: "btn btn-link" %></a>
+                <a><%= f.submit "ログアウト", class: "btn btn-link", id: "log_out" %></a>
               <% end %></li>
             </ul>
           </div>

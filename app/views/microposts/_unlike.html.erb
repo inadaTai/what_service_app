@@ -1,4 +1,4 @@
-<%= form_for(current_user.favorite_relationships.find_by(micropost_id: micropost.id),
+<%= form_with(model: current_user.favorite_relationships.find_by(micropost_id: micropost.id),
              html: { method: :delete }, remote: true) do |f| %>
   <%= button_tag( class: "btn btn-default") do %>
     <%= content_tag :span, micropost.liked_by.count, class: "glyphicon glyphicon-heart" %>

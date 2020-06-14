@@ -1,9 +1,8 @@
 <% provide(:page_title, 'ユーザー 一覧') %>
 <h1 class="users_top">ユーザー　一覧ページ</h1>
-<div>
+<div class="user_search_form">
   <%= form_with url: users_path, method: :get, local: true do |f| %>
-    <%= f.label :search, "ユーザー検索" %>
-    <%= text_field_tag :search, params[:search], placeholder: "全体ユーザーを検索" %>
+    <%= text_field_tag :search, params[:search], placeholder: "検索したいユーザー名を入れてください" %>
     <%= submit_tag 'ユーザー検索', :name => nil %>
   <% end %>
 </div>
