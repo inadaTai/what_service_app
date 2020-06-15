@@ -4,6 +4,14 @@
       <%= f.label :name, "記事の題名" %>
       <%= f.text_field :name, class: 'form-control', placeholder: "(※30文字まで)(例：月額制動画ストリーミングサービス)" %>
     </div>
+    <div class="field article_name">
+      <%= f.label :category, 'カテゴリを選んでください' %><br>
+      <%= f.select :category,
+      [["フィットネスクラブ", "フィットネスクラブ"], ["サブスクリプション", "サブスクリプション"],["音楽、動画配信サービス", "音楽、動画配信サービス"], ["スクール、塾関連", "スクール、塾関連"],
+      ["オンラインサロン", "オンラインサロン"], ["アプリ、ゲーム配信サービス", "アプリ、ゲーム配信サービス"], ["美容室、美容院", "美容室、美容院"],
+      ["ファンクラブ", "ファンクラブ"], ["その他", "その他"]],
+      autofocus: true, class: 'form-control' %>
+    </div>
     <div class="field article_price">
       <%= f.label :price, "サービスの金額を入力してください" %>
       <%= f.text_field :price, size: "10x10", class: 'form-control', placeholder: "(※30文字まで)(例：月額3000円...等)" %>

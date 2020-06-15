@@ -2,7 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Micropost, type: :model do
   let(:user) { create(:user) }
-  let(:micropost) { user.microposts.build(name: "ゲームクラウドサービス", price: "月額1000円", content: "良いサービス", user_id: user.id) }
+  let(:micropost) do
+    user.microposts.build(name: "ゲームクラウドサービス", price: "月額1000円", category: "アプリ、ゲーム配信サービス",
+                          content: "良いサービス", user_id: user.id)
+  end
 
   describe "記事の投稿テスト" do
     it "有効な記事の投稿ができる" do

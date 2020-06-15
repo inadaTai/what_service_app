@@ -16,6 +16,18 @@
     <% if unchecked_notifications.any? %>
       <p><%= link_to "未読通知を見にいく(#{unchecked_notifications.count}件)", notifications_path %></p>
     <% end %>
+    <h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">カテゴリーリストはこちら！</h6>
+    <div class="collapse" id="collapseExample">
+    <p><%= link_to "フィットネスクラブ", fitness_path %></p>
+    <p><%= link_to "スクール、塾", school_path %></p>
+    <p><%= link_to "美容室、美容院", beautysalon_path %></p>
+    <p><%= link_to "サブスクリプション", subscription_path %></p>
+    <p><%= link_to "音楽、動画配信サービス", music_path %></p>
+    <p><%= link_to "アプリ、ゲーム配信サービス", game_path %></p>
+    <p><%= link_to "ファンクラブ", fanclub_path %></p>
+    <p><%= link_to "オンラインサロン", salon_path %></p>
+    <p><%= link_to "その他", other_path %></p>
+    </div>
   </aside>
   <div class="col-md-6 col-md-offset-1">
     <h3>全体投稿記事一覧<%= "(#{Micropost.all.count})" %></h3>

@@ -426,6 +426,29 @@ div.modal-content{
   }
 }
 
+/* 投稿記事のカテゴリーページ */
+h6.category_list{
+  display: none;
+}
+
+@media (max-width: 650px) {
+  div.hi-index{
+    display: none;
+  }
+  h6.category_list{
+    display: block;
+    font-weight: bold;
+    font-size: 20px;
+    color: blue;
+  }
+
+  h1.category-title{
+    font-weight: bold;
+    font-size: 2.0em;
+  }
+}
+
+
 /* コメントのレイアウト */
 div.comment_section{
   list-style: none;

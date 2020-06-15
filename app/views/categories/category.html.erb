@@ -1,0 +1,14 @@
+<% provide(:page_title, @title) %>
+<div class="row">
+  <div class="col-md-4">
+    <%= render 'share/category_index' %>
+  </div>
+  <div class="col-md-6 col-md-offset-1">
+    <h1 class="category-title"><%= "#{@title}" %></h1>
+    <ol class="microposts">
+      <% @categories.each do |category| %>
+          <%= render 'categories/category',  category: category %>
+      <% end %>
+    </ol>
+  </div>
+</div>

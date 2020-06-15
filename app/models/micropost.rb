@@ -6,6 +6,7 @@ class Micropost < ApplicationRecord
   has_rich_text :content
   validates :name, presence: true, length: { maximum: 30 }
   validates :price, presence: true, length: { maximum: 30 }
+  validates :category, presence: true
   has_one_attached :picture, dependent: :destroy
   validate :picture_presence
   validate :picture_size

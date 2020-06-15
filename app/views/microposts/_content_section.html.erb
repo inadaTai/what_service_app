@@ -5,7 +5,13 @@
 <% end %>
 <span class="user">投稿主：<%= link_to "#{micropost.user.name}", micropost.user  %></span>
 <span class="micropost_content">
-  <div class="service_name" id="service_name1">①サービスの名前</div><%= "#{micropost.name}" %>
+  <div class="service_name" id="service_name1">①サービスの名前</div><%= "#{micropost.name}" %><br>
+  【カテゴリ】
+  <% if micropost.category.present? %>
+    <%= "#{micropost.category}" %>
+  <% else %>
+    カテゴリ未設定
+  <% end %>
   <div class="service_price" id="service_price2">②サービスの金額</div><%= "#{micropost.price}" %>
     <% if micropost.picture.attached? %>
       <div class="service_picture" id="service_picture3">③画像</div>

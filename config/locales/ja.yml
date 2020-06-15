@@ -16,6 +16,7 @@ ja:
         price: サービスの金額を入力してください
         content: 記事の内容
         picture: 画像
+        category: カテゴリ
     errors:
       messages:
         wrong: が正しくありません

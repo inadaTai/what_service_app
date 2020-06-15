@@ -4,7 +4,7 @@ RSpec.describe "Microposts", type: :system do
   let(:user) { create(:user) }
 
   def submit_valid_micropost
-    fill_in '記事の題名', with: 'フィットネスクラブ', match: :first
+    fill_in '記事の題名', with: '渋谷のフィットネスクラブ', match: :first
     fill_in 'サービスの金額を入力してください', with: '月額500円', match: :first
     find('trix-editor').click.set('良いサービス')
     attach_file 'micropost[picture]', "#{Rails.root}/db/images_seeds/1.png", match: :first
@@ -31,11 +31,23 @@ RSpec.describe "Microposts", type: :system do
       expect(page).to have_selector '.alert-success'
     end
 
+    it "有効な投稿後カテゴリ別ページで記事が表示される" do
+      submit_valid_micropost
+      visit fitness_path
+      expect(page.body).to have_link '渋谷のフィットネスクラブ'
+    end
+
+    it "有効な投稿後カテゴリが違うものは記事が表示されない" do
+      submit_valid_micropost
+      visit school_path
+      expect(page.body).not_to have_link '渋谷のフィットネスクラブ'
+    end
+
     it "有効な投稿してその後投稿物を削除し成功のメッセージまで出る", js: true do
       submit_valid_micropost
       expect(current_path).to eq root_path
       expect(page).to have_selector '.alert-success'
-      click_on 'フィットネスクラブ'
+      click_on '渋谷のフィットネスクラブ'
       visit current_path
       click_on '削除する'
       expect(page.driver.browser.switch_to.alert.text).to eq "投稿した記事を削除しますか？"
@@ -47,7 +59,7 @@ RSpec.describe "Microposts", type: :system do
       submit_valid_micropost
       expect(current_path).to eq root_path
       expect(page).to have_selector '.alert-success'
-      click_on 'フィットネスクラブ'
+      click_on '渋谷のフィットネスクラブ'
       visit current_path
       click_on '記事の修正を行う'
       fill_in '記事の題名', with: '月額動画サービス', match: :first

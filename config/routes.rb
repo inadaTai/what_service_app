@@ -18,6 +18,17 @@ Rails.application.routes.draw do
   post '/logout', to:'sessions#destroy'
   get 'password_edits/edit',to:'password_edits#edit'
   get 'auth/:provider/callback', to: 'sessions#create'
+  get '/category',       to: 'categories#category'
+  get '/fitness',        to: 'categories#fitness'
+  get '/school',         to: 'categories#school'
+  get '/subscription',   to: 'categories#subscription'
+  get '/music',          to: 'categories#music'
+  get '/game',           to: 'categories#game'
+  get '/salon',          to: 'categories#salon'
+  get '/beautysalon',    to: 'categories#beautysalon'
+  get '/other',          to: 'categories#other'
+  get '/fanclub',        to: 'categories#fanclub'
+
   resources :users do
     member do
       get :following, :followers, :likes

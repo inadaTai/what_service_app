@@ -36,6 +36,24 @@ RSpec.describe "ログインに関するテスト", type: :system do
       expect(page).to have_selector '.alert-success'
     end
 
+    it "有効なログインをした場合ヘッダーのメニューが変わる" do
+      visit root_path
+      expect(page.body).to have_link 'ホーム'
+      expect(page.body).to have_link 'アバウト'
+      expect(page.body).to have_link 'ログイン'
+      expect(page.body).not_to have_link '検索'
+      expect(page.body).not_to have_link 'メニュー'
+      expect(page.body).not_to have_css('#picture_dropdown')
+      login_system(user)
+      expect(page.body).to have_link '検索'
+      expect(page.body).to have_link 'メニュー'
+      link = find('#picture_dropdown')
+      link.click
+      expect(page.body).to have_link 'プロフィール'
+      expect(page.body).to have_link '設定'
+      expect(page.body).to have_button 'ログアウト'
+    end
+
     it "有効なログイン後にログアウトできる" do
       login_system(user)
       expect(current_path).to eq user_path(1)
