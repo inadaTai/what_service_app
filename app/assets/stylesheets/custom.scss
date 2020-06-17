@@ -6,34 +6,42 @@
 body {
   padding-top: 60px;
 }
+
 section {
   overflow: auto;
 }
+
 textarea {
   resize: vertical;
 }
+
 .center {
   text-align: center;
   background-image: url('/center.jpg');
   background-repeat: no-repeat;
 }
+
 .center h1 {
   margin-bottom: 10px;
   color: orange;
 }
+
 .center p {
   font-weight: bold;
   color: orange;
 }
+
 h1,h2,h3{
   line-height: 1;
 }
+
 h1{
   font-size: 3em;
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
 }
+
 p{
   font-size: 1.1em;
   line-height: 1.7em;
@@ -141,6 +149,7 @@ footer {
   border-top: 1px solid #eaeaea;
   color: #777;
 }
+
 footer small {
   float: left;
 }
@@ -232,6 +241,18 @@ div.drop_user_status{
     width: 250px;
   }
 }
+
+@media (max-width: 360px) {
+  h1.users_top{
+    letter-spacing: -2px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  #search{
+    width: 150px;
+  }
+}
+
 /* sidebar */
 
 aside {
@@ -403,6 +424,7 @@ div.service_content{
 
 div.picture_section{
   padding-top: 5px;
+  display: contents;
 }
 
 div.log-picture{
@@ -422,7 +444,13 @@ div.modal-content{
 
 @media (max-width: 650px) {
   div.picture_section > img{
-    width:400px;
+    width:350px;
+  }
+}
+
+@media (max-width: 400px) {
+  div.picture_section > img{
+    width:250px;
   }
 }
 
@@ -479,6 +507,7 @@ div.current{
 div.help_center{
   white-space: pre-line;
 }
+
 ul.kantan{
   list-style: none;
 }
@@ -518,11 +547,6 @@ div.article_name{
   padding-bottom: 15px;
 }
 
-div.article_price{
-  width:600px;
-  padding-bottom: 15px;
-}
-
 div.article_content{
   padding-bottom: 20px;
 }
@@ -541,4 +565,23 @@ figcaption.attachment__caption{
 
 #micropost_content_trix_input_micropost{
   height: 900px;
+}
+
+
+/* googlemap_API */
+
+#map{
+  width: 500px;
+  height: 300px;
+}
+
+div.micropost_map_section{
+  padding-top: 15px;
+}
+
+@media (max-width: 500px) {
+  #map{
+    width: 300px;
+    height: 250px;
+  }
 }

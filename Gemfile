@@ -24,6 +24,8 @@ gem 'mysql2', '>= 0.4.4'
 gem 'coffee-rails'
 gem 'uglifier'
 gem 'trix'
+gem 'gmaps4rails'
+gem "geocoder"
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 # Reduces boot times through caching; required in config/boot.rb

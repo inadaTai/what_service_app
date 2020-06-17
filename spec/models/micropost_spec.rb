@@ -14,6 +14,13 @@ RSpec.describe Micropost, type: :model do
       expect(micropost).to be_valid
     end
 
+    it "カテゴリがない場合は無効" do
+      micropost.picture.attach(io: File.open(Rails.root.join('db', 'images_seeds', '1.png')), filename: '1.png',
+                               content_type: 'image/png')
+      micropost.update_attributes(category: nil)
+      expect(micropost).to be_invalid
+    end
+
     it "画像は有るが値段、本文と題名がない場合は無効" do
       micropost.picture.attach(io: File.open(Rails.root.join('db', 'images_seeds', '1.png')), filename: '1.png',
                                content_type: 'image/png')

@@ -6,10 +6,15 @@ class MicropostsController < ApplicationController
     @comment = Comment.new
     @comments = @micropost.comments
     @user = User.find_by(id: @micropost.user_id)
+    @hash = Gmaps4rails.build_markers(@micropost) do |post, marker|
+      marker.lat post.latitude
+      marker.lng post.longitude
+      marker.infowindow post.map_name
+    end
   end
 
   def create
-    @micropost = current_user.microposts.build(post_params)
+    @micropost = current_user.microposts.create(post_params)
     if @micropost.save
       flash[:success] = "記事を投稿しました！"
       redirect_to root_url
@@ -42,7 +47,8 @@ class MicropostsController < ApplicationController
   private
 
   def post_params
-    params.require(:micropost).permit(:name, :price, :content, :picture, :category)
+    params.require(:micropost).permit(:name, :price, :content, :picture, :category,
+      :map_name, :latitude, :longitude)
   end
 
   def correct_user

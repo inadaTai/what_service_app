@@ -1,0 +1,19 @@
+<div class="micropost_map_section">【サービスを受けれる場所】</div>
+<div id='map'></div>
+<script>
+  function initMap() {
+    var mapPosition = {lat: <%= @micropost.latitude %>, lng: <%= @micropost.longitude %>};
+    var mapArea = document.getElementById('map');
+    var mapOptions = {
+      center: mapPosition,
+      zoom: 16,
+    };
+    var map = new google.maps.Map(mapArea, mapOptions);
+    var markerOptions = {
+      map: map,
+      position: mapPosition,
+    };
+    var marker = new google.maps.Marker(markerOptions);
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%="#{Rails.application.credentials[:GOOGLE_MAP_KEY]}"%>&callback=initMap"></script>

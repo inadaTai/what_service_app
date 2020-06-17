@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_060044) do
+ActiveRecord::Schema.define(version: 2020_06_16_101443) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -73,6 +73,9 @@ ActiveRecord::Schema.define(version: 2020_06_15_060044) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "picture"
     t.string "category"
+    t.string "map_name"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"
   end

@@ -1,27 +1,31 @@
 <%= form_with(model: micropost, local: true) do |f| %>
     <%= render 'share/error_messages', object: f.object %>
     <div class="field article_name">
-      <%= f.label :name, "記事の題名" %>
+      <%= f.label :name, "(※必須)記事の題名" %>
       <%= f.text_field :name, class: 'form-control', placeholder: "(※30文字まで)(例：月額制動画ストリーミングサービス)" %>
     </div>
     <div class="field article_name">
-      <%= f.label :category, 'カテゴリを選んでください' %><br>
+      <%= f.label :map_name, "(※任意)建物や住所がある場合は入力するとMAPとして出ます" %>
+      <%= f.text_field :map_name, size: "10x10", class: 'form-control', placeholder: "(※30文字まで)(例：〇〇本社ビルまたは東京都〇〇区〇〇町...等)" %>
+    </div>
+    <div class="field article_name">
+      <%= f.label :category, '(※必須)カテゴリを選んでください' %><br>
       <%= f.select :category,
       [["フィットネスクラブ", "フィットネスクラブ"], ["サブスクリプション", "サブスクリプション"],["音楽、動画配信サービス", "音楽、動画配信サービス"], ["スクール、塾関連", "スクール、塾関連"],
       ["オンラインサロン", "オンラインサロン"], ["アプリ、ゲーム配信サービス", "アプリ、ゲーム配信サービス"], ["美容室、美容院", "美容室、美容院"],
       ["ファンクラブ", "ファンクラブ"], ["その他", "その他"]],
       autofocus: true, class: 'form-control' %>
     </div>
-    <div class="field article_price">
-      <%= f.label :price, "サービスの金額を入力してください" %>
+    <div class="field article_name">
+      <%= f.label :price, "(※必須)サービスの金額を入力してください" %>
       <%= f.text_field :price, size: "10x10", class: 'form-control', placeholder: "(※30文字まで)(例：月額3000円...等)" %>
     </div>
     <div class="field article_content">
-      <%= f.label :content, "記事の内容" %>
+      <%= f.label :content, "(※必須)記事の内容" %>
       <%= f.rich_text_area :content, placeholder: "(※2500文字まで)記事の内容" %>
     </div>
     <div class="field article_picture">
-      <%= f.label :picture, "記事の画像" %>
+      <%= f.label :picture, "(※必須)記事の画像" %>
       <%= f.file_field :picture %>
     </div>
     <%= f.submit "記事を投稿する", class: "btn btn-lg btn-primary" %>

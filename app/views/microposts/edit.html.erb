@@ -7,6 +7,10 @@
   <%= f.text_field :name, size: "10x10", class: 'form-control', placeholder: "(※30文字まで)(例：月額制動画ストリーミングサービス)" %>
 </div>
 <div class="field article_name">
+  <%= f.label :map_name, "建物や住所がある場合は入力するとMAPとして出ます" %>
+  <%= f.text_field :map_name, size: "10x10", class: 'form-control', placeholder: "渋谷フィットネスクラブ" %>
+</div>
+<div class="field article_name">
   <%= f.label :category, 'カテゴリを選んでください' %><br>
   <%= f.select :category,
   [["フィットネスクラブ", "フィットネスクラブ"], ["サブスクリプション", "サブスクリプション"],["音楽、動画配信サービス", "音楽、動画配信サービス"], ["スクール、塾関連", "スクール、塾関連"],
