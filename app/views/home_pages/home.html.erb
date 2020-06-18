@@ -44,7 +44,7 @@
       <p>フェイスブックアカウトをお持ちの方は</p>
       <%= link_to "/auth/facebook", class: "btn btn-lg btn-primary" do %>
         <i class="fab fa-facebook"></i> Facebookアカウントでログイン!
-        <% end %>
+      <% end %>
     </div>
     <div class="col-md-6">
       <p>ツイッターアカウトをお持ちの方は</p>
@@ -56,13 +56,28 @@
 </div>
 <h1>最新の投稿記事</h1>
 <%= render 'share/anfeed', feed_items: @feed_items %>
-<p>このサービスを通してあなたも利用中または利用していたサービスの情報を共有しませんか？</p>
+<div class="home_picture_section">
+  <%= link_to about_path do %>
+    <img src="/share_1.png">
+  <% end %>
+</div>
+<p class="home_content_section">このサービスを通してあなたも利用中または利用していたサービスの情報を共有しませんか？</p>
 <p>これより先の全ての記事を見る場合は新規会員登録が必要となります。</p>
-<%= link_to "新規登録", signup_path, class: "btn btn-lg btn-success" %><br>
-<br><p>お試しでサイトを閲覧できます！</p>
-<%= form_with(scope: :session, url: login_path, local: true) do |f| %>
-  <%= f.hidden_field :email ,value: "test@example.com" %>
-  <%= f.hidden_field :password ,value: "foobar" %>
-  <%= f.submit "かんたんログイン", class: "btn btn-warning" %>
-<% end %>
+<p><%= link_to "新規登録", signup_path, class: "btn btn-lg btn-success" %></p><br>
+<div class="row">
+  <div class="col-md-6 app_section">
+    スマートフォンユーザーの方はアプリ版もあります！<br>
+    <%= link_to "https://play.google.com/store/apps/details?id=com.wsa.what_service" do %>
+      <img src="/google-play-badge.png" width="180px" height="70px">
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    <p>お試しでサイトを閲覧できます！</p>
+    <%= form_with(scope: :session, url: login_path, local: true) do |f| %>
+      <%= f.hidden_field :email ,value: "test@example.com" %>
+      <%= f.hidden_field :password ,value: "foobar" %>
+      <%= f.submit "かんたんログイン", class: "btn btn-warning" %>
+    <% end %>
+  </div>
+</div>
 <% end %>

@@ -8,6 +8,7 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <%= render 'layouts/shim' %>
+  <%= favicon_link_tag('favicon.ico') %>
 </head>
 <body>
   <%= render 'layouts/header' %>
@@ -16,8 +17,8 @@
       <div class="alert alert-<%= message_type %>"><%= message %></div>
     <% end %>
     <%= yield %>
-    <%= render 'layouts/footer' %>
   </div>
+  <%= render 'layouts/footer' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </body>
 </html>

@@ -17,6 +17,7 @@ ja:
         content: 記事の内容
         picture: 画像
         category: カテゴリ
+        map_name: 建物名、住所
     errors:
       messages:
         wrong: が正しくありません

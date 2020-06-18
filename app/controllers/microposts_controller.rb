@@ -6,11 +6,6 @@ class MicropostsController < ApplicationController
     @comment = Comment.new
     @comments = @micropost.comments
     @user = User.find_by(id: @micropost.user_id)
-    @hash = Gmaps4rails.build_markers(@micropost) do |post, marker|
-      marker.lat post.latitude
-      marker.lng post.longitude
-      marker.infowindow post.map_name
-    end
   end
 
   def create
