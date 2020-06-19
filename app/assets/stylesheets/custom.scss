@@ -172,6 +172,8 @@ a.dropdown-toggle{
 /* フッター */
 footer {
   margin-top: 45px;
+  margin-left: 20px;
+  margin-right: 20px;
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: #777;
@@ -191,6 +193,14 @@ footer ul li {
   margin-left: 15px;
 }
 
+@media (max-width: 435px) {
+  footer ul li {
+    float: left;
+    margin-left: 15px;
+    font-size: 11px;
+  }
+}
+
 /* アバウト */
 div.about-design{
   background-color:white;
@@ -206,6 +216,12 @@ div.policy{
   padding-top: 10px 0;
   font-weight: bold;
   text-align: center;
+}
+
+@media (min-width: 992px) {
+  div.signup_section{
+    margin-left: 100px;
+  }
 }
 
 /* ログインフォーム */
@@ -358,6 +374,11 @@ h10.homeuser_name{
   a {
     padding: 0;
   }
+}
+
+div.mypage_usericon{
+  font-weight: bold;
+  font-size: 1.1em;
 }
 
 .users.follow {

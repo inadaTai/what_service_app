@@ -7,7 +7,7 @@
       <img src="/default2.jpg" width="80px" height="80px">
     <% end %>
   </p>
-  ユーザー名:<%= "#{user.name}" %>
+  <div class="mypage_usericon">ユーザー名:<%= "#{user.name}" %>
   </section>
   <section class="status">
     <%= render 'share/follow_status', user: user %>

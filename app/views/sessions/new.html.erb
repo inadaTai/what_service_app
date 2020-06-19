@@ -4,19 +4,22 @@
   <div class="col-md-4">
     <img src="/login1.png" width="450px" height="450px">
   </div>
-  <div class="col-md-6 col-md-offset-1">
+  <div class="col-md-6 col-md-offset-1 signup_section">
     <%= form_with(scope: :session, url: login_path, local: true) do |f| %>
       <%= f.label :email, "メールアドレス" %>
       <%= f.email_field :email,class:'form-control' %>
       <%= f.label :password, "パスワード" %>
       <%= f.password_field :password,class:'form-control' %>
       <%= f.label :remember_me, class: "checkbox inline" do %>
-        <%= f.check_box :remember_me %>
-        <span>次回からログイン省略</span>
-      <% end %>
+      <%= f.check_box :remember_me %>
+      <span>次回からログイン省略</span>
+    <% end %>
       <br><%= f.submit "What Service Appへログイン", class: "btn btn-success" %><br>
     <% end %>
-
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
     <br><p>お試しでサイトを閲覧できます！</p>
     <%= form_with(scope: :session, url: login_path, local: true) do |f| %>
       <%= f.hidden_field :email ,value: "test@example.com" %>
@@ -25,12 +28,18 @@
     <% end %>
     <br><p>他のプラットフォームからログイン可能です！</p>
     <p><%= link_to  "/auth/twitter", class: "btn btn-info" do %>
-      <i class="fab fa-twitter"></i> ツイッターアカウントでログイン
+        <i class="fab fa-twitter"></i> ツイッターアカウントでログイン
       <% end %></p>
-    <p><%= link_to "/auth/facebook", class: "btn btn-primary" do %>
-    <i class="fab fa-facebook"></i> Facebookアカウントでログイン
-    <% end %></p>
-    <p>アカウントをお持ちでない方はこちら！</p>
-    <p><%= link_to "新規会員登録", signup_path, class: "btn btn-success" %></p>
-  </div>
-</div>
+      <p><%= link_to "/auth/facebook", class: "btn btn-primary" do %>
+          <i class="fab fa-facebook"></i> Facebookアカウントでログイン
+        <% end %></p>
+      </div>
+      <div class="col-md-6 app_section">
+        <p>アカウントをお持ちでない方はこちら！</p>
+        <p><%= link_to "新規会員登録", signup_path, class: "btn btn-success" %></p>
+        スマートフォンユーザーの方はアプリ版もあります！<br>
+        <%= link_to "https://play.google.com/store/apps/details?id=com.wsa.what_service" do %>
+          <img src="/google-play-badge.png" width="180px" height="70px">
+        <% end %>
+      </div>
+    </div>

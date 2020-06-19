@@ -1,33 +1,50 @@
 <% provide(:page_title, '新規登録') %>
 <h1>新規登録</h1>
-
 <div class="row">
-<div class="col-md-4">
-  <img src="/signup.png" width="450px" height="450px">
-</div>
-  <div class="col-md-6 col-md-offset-1">
+  <div class="col-md-4">
+    <img src="/signup.png" width="450px" height="450px">
+  </div>
+  <div class="col-md-6 col-md-offset-1 signup_section">
     <%= form_with(model: @user, url: signup_path, local: true) do |f| %>
-    <%= render 'share/error_messages', object: f.object %>
-
-    <%= f.label :name, "ユーザーネーム(サイト内で公開されるお名前です) (例:hoge_175)" %>
-    <%= f.text_field :name, class:'form-control'%>
-
-    <%= f.label :email, "メールアドレス" %>
-    <%= f.email_field :email,class:'form-control'%>
-
-    <%= f.label :password, "パスワード" %>
-    <%= f.password_field :password,class:'form-control'%>
-
-    <%= f.label :password_confirmation, "もう１度パスワード入力してください" %>
-    <%= f.password_field :password_confirmation,class:'form-control'%>
-
-    <br><%= f.submit "アカウント登録", class: "btn btn-primary" %>
-
+      <%= render 'share/error_messages', object: f.object %>
+      <%= f.label :name, "ユーザーネーム(サイト内で公開されるお名前です) (例:hoge_175)" %>
+      <%= f.text_field :name, class:'form-control'%>
+      <%= f.label :email, "メールアドレス" %>
+      <%= f.email_field :email,class:'form-control'%>
+      <%= f.label :password, "パスワード" %>
+      <%= f.password_field :password,class:'form-control'%>
+      <%= f.label :password_confirmation, "もう１度パスワード入力してください" %>
+      <%= f.password_field :password_confirmation,class:'form-control'%>
+      <br><%= f.submit "アカウント登録", class: "btn btn-primary" %>
     <% end %>
-
     <br><div class="policy">
-    <p>サービスのご利用前に利用規約のご確認をお願い致します</p>
+      <p>サービスのご利用前に利用規約のご確認をお願い致します</p>
       <br><p><%= link_to "利用規約" , policy_path %></p><br>
     </div>
   </div>
 </div>
+<div class="row">
+  <div class="col-md-6">
+    <br><p>お試しでサイトを閲覧できます！</p>
+    <%= form_with(scope: :session, url: login_path, local: true) do |f| %>
+      <%= f.hidden_field :email ,value: "test@example.com" %>
+      <%= f.hidden_field :password ,value: "foobar" %>
+      <%= f.submit "かんたんログイン", class: "btn btn-warning" %>
+    <% end %>
+    <br><p>他のプラットフォームからログイン可能です！</p>
+    <p><%= link_to  "/auth/twitter", class: "btn btn-info" do %>
+        <i class="fab fa-twitter"></i> ツイッターアカウントでログイン
+      <% end %></p>
+      <p><%= link_to "/auth/facebook", class: "btn btn-primary" do %>
+          <i class="fab fa-facebook"></i> Facebookアカウントでログイン
+        <% end %></p>
+      </div>
+      <div class="col-md-6 app_section">
+        <p>アカウントをお持ちの方はこちら！</p>
+        <p><%= link_to "ログインする", login_path, class: "btn btn-success" %></p>
+        スマートフォンユーザーの方はアプリ版もあります！<br>
+        <%= link_to "https://play.google.com/store/apps/details?id=com.wsa.what_service" do %>
+          <img src="/google-play-badge.png" width="180px" height="70px">
+        <% end %>
+      </div>
+    </div>
