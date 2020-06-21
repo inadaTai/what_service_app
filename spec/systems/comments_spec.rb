@@ -48,9 +48,8 @@ RSpec.describe "Comments", type: :system do
       expect { submit_valid_comment }.to change(user.comments, :count).by(1)
     end
   end
-  
-  context "未ログイン時の表示" do
 
+  context "未ログイン時の表示" do
     it "未ログインのユーザーはコメント入力欄がない" do
       login_system(user)
       submit_valid_micropost

@@ -59,6 +59,9 @@ jobs:
           name: request spec
           command: bundle exec rspec spec/requests
       - run:
+          name: request spec
+          command: bundle exec rspec spec/systems
+      - run:
           name: run rubocop
           command: bundle exec rubocop
       - store_test_results:
