@@ -8,7 +8,6 @@ jobs:
           MYSQL_HOST: 127.0.0.1
           MYSQL_USERNAME: 'root'
           MYSQL_PASSWORD: 'password'
-          SELENIUM_DRIVER_URL: http://web
       - image: circleci/mysql:8.0
         command: mysqld --default-authentication-plugin=mysql_native_password
         environment:
@@ -59,9 +58,6 @@ jobs:
       - run:
           name: request spec
           command: bundle exec rspec spec/requests
-      - run:
-          name: request spec
-          command: bundle exec rspec spec/systems
       - run:
           name: run rubocop
           command: bundle exec rubocop
